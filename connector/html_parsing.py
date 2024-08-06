@@ -10,7 +10,7 @@ from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.core import VectorStoreIndex, StorageContext, Document
 from llama_index.vector_stores.qdrant import QdrantVectorStore
 from qdrant_client import QdrantClient, AsyncQdrantClient
-from utils.my_sentence_splitter import MySentenceSplitter
+from utils.sentence_splitter import MySentenceSplitter
 from utils.qdrant_helper import sparse_doc_vectors, sparse_query_vectors, reciprocal_rank_fusion
 from config import qdrant_host, qdrant_port, qdrant_collection_prefix, embed_model_path, category_list, qdrant_month_list, category_dict
 
