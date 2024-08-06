@@ -12,7 +12,7 @@ class CustomRetriever(BaseRetriever):
         self.hybrid_retriever = hybrid_retriever
 
     def _retrieve(self, query):
-        return self.hybrid_retriever.custom_retrieve_vector(query.query_str)
+        return self.hybrid_retriever.custom_retrieve_vector(query)
 
 custom_retriever = CustomRetriever(hybrid_retriever=hybrid_retriever)
 
