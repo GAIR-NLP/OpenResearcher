@@ -1,0 +1,1583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?latexml searchpaths="/opt/latexml,/home/data/tmp/tmp/2401.00002"?>
+<!--  %% Beginning of file ’sample63.tex’ --><!--  %% --><!--  %% Modified 2019 June --><!--  %% --><!--  %% This is a sample manuscript marked up using the --><!--  %% AASTeX v6.3 LaTeX 2e macros. --><!--  %% --><!--  %% AASTeX is now based on Alexey Vikhlinin’s emulateapj.cls --><!--  %% (Copyright 2000-2015).  See the classfile for details. --><!--  %% AASTeX requires revtex4-1.cls (http://publish.aps.org/revtex4/) and --><!--  %% other external packages (latexsym, graphicx, amssymb, longtable, and epsf). --><!--  %% All of these external packages should already be present in the modern TeX --><!--  %% distributions.  If not they can also be obtained at www.ctan.org. --><!--  %“declare@file@substitution–revtex4-1.cls˝–revtex4-2.cls˝ --><?latexml class="aastex63" options="twocolumn"?>
+<?latexml package="epsfig"?>
+<?latexml package="graphicx"?>
+<?latexml package="courier"?>
+<?latexml package="natbib"?>
+<?latexml package="amssymb"?>
+<?latexml package="color"?>
+<?latexml package="hyperref"?>
+<?latexml package="grffile" options="space"?>
+<!--  %% Reintroduced the “received and “accepted commands from AASTeX v5.2 --><!--  %“received–June 1, 2019˝ --><!--  %“revised–January 10, 2019˝ --><!--  %“accepted–“today˝ --><!--  %% Command to document which AAS Journal the manuscript was submitted to. --><!--  %% Adds ”Submitted to ” the argument. --><!--  %“submitjournal–APJ˝ --><!--  %% For manuscript that include authors in collaborations, AASTeX v6.3 --><!--  %% builds on the “collaboration command to allow greater freedom to --><!--  %% keep the traditional author+affiliation information but only show --><!--  %% subsets. The “collaboration command now must appear AFTER the group --><!--  %% of authors in the collaboration and it takes TWO arguments. The last --><!--  %% is still the collaboration identifier. The text given in this --><!--  %**** s2˙storm.tex Line 125 **** --><!--  %% argument is what will be shown in the manuscript. The first argument --><!--  %% is the number of author above the “collaboration command to show with --><!--  %% the collaboration text. If there are authors that are not part of any --><!--  %% collaboration the “nocollaboration command is used. This command takes --><!--  %% one argument which is also the number of authors above to show. A --><!--  %% dashed line is shown to indicate no collaboration. This example manuscript --><!--  %% shows how these commands work to display specific set of authors --><!--  %% on the front page. --><!--  %% --><!--  %% For manuscript without any need to use “collaboration the --><!--  %% “AuthorCollaborationLimit command from v6.2 can still be used to --><!--  %% show a subset of authors. --><!--  %“AuthorCollaborationLimit=2 --><!--  %% will only show Schwarz &amp; Muench on the front page of the manuscript --><!--  %% (assuming the “collaboration and “nocollaboration commands are --><!--  %% commented out). --><!--  %% --><!--  %% Note that all of the author will be shown in the published article. --><!--  %% This feature is meant to be used prior to acceptance to make the --><!--  %% front end of a long author article more manageable. Please do not use --><!--  %% this functionality for manuscripts with less than 20 authors. Conversely, --><!--  %% please do use this when the number of authors exceeds 40. --><!--  %% --><!--  %**** s2˙storm.tex Line 150 **** --><!--  %% Use “allauthors at the manuscript end to show the full author list. --><!--  %% This command should only be used with “AuthorCollaborationLimit is used. --><!--  %% The following command can be used to set the latex table counters.  It --><!--  %% is needed in this document because it uses a mix of latex tabular and --><!--  %% AASTeX deluxetables.  In general it should not be needed. --><!--  %“setcounter–table˝–1˝ --><?latexml graphicspath="/home/data/tmp/tmp/2401.00002"?>
+<?latexml graphicspath="/home/data/tmp/tmp/2401.00002/figures"?>
+<!--  %% This is the end of the preamble.  Indicate the beginning of the --><!--  %% manuscript itself with “begin–document˝. --><?latexml RelaxNGSchema="LaTeXML"?>
+<document xmlns="http://dlmf.nist.gov/LaTeXML" class="ltx_authors_multiline">
+  <resource src="LaTeXML.css" type="text/css"/>
+  <resource src="ltx-article.css" type="text/css"/>
+  <resource src="ltx-ulem.css" type="text/css"/>
+  <title>Prompt emission of relativistic protons up to GeV energies from M6.4-class solar flare on July 17, 2023</title>
+  <creator role="author">
+    <personname>C.E. Navia</personname>
+    <picture height="9.46" tex="\@@personname{C.E. Navia}" width="66.69" xml:id="pic1">
+      <text>)</text>
+    </picture>
+    <contact role="affiliation">Instituto de Física, Universidade Federal Fluminense, 24210-346, Niterói, RJ, Brazil </contact>
+    <contact role="correspondent">C.E. Navia</contact>
+    <contact role="email">carlos_navia@id.uff.br</contact>
+  </creator>
+  <creator role="author">
+    <personname>M.N. de Oliveira</personname>
+    <picture height="9.61" tex="\@@personname{M.N. de Oliveira}" width="101.51" xml:id="pic2">
+      <text>)</text>
+    </picture>
+    <contact role="affiliation">Instituto de Física, Universidade Federal Fluminense, 24210-346, Niterói, RJ, Brazil </contact>
+  </creator>
+  <creator role="author">
+    <personname>A.A. Nepomuceno</personname>
+    <picture height="12.15" tex="\@@personname{A.A. Nepomuceno}" width="110.31" xml:id="pic3">
+      <text>)</text>
+    </picture>
+    <contact role="affiliation">Departamento de Ciências da Natureza, Universidade Federal Fluminense, 28890-000, Rio das Ostras, RJ, Brazil</contact>
+  </creator>
+  <abstract name="Abstract">
+<!--  %% Mark off the abstract in the ‘‘abstract’’ environment. -->    <p>We show evidence of particle acceleration at GEV energies associated directly with protons from the prompt emission of a long-duration M6-class solar flare on July 17, 2023, rather than from protons acceleration by shocks from its associated Coronal Mass Ejection (CME), which erupted with a speed of 1342 km/s. Solar Energetic Particles (SEP) accelerated by the blast have reached Earth, up to an almost S3 (strong) category of a radiation storm on the NOAA scale.
+Also, we show a temporal correlation between the fast rising of GOES-16 proton and muon excess at ground level in the count rate of the New-Tupi muon detector at the central SAA region.
+A Monte Carlo spectral analysis based on muon excess at New-Tupi is consistent with the acceleration of electrons and protons (ions) up to relativistic energies (GeV energy range) in the impulsive phase of the flare. In addition, we present another two marginal particle excesses (with low confidence) at ground-level detectors in correlation with the solar flare prompt emission.</p>
+  </abstract>
+  <keywords><!--  %% Keywords should appear after the “end–abstract˝ command. -->sun:activity, high-speed stream, cosmic rays modulation<!--  %% See the online documentation for the full list of available subject 
+     %% keywords and the rules for their use. --></keywords>
+<!--  %“author–M.C.A. Vieira˝ 
+     %**** s2˙storm.tex Line 200 **** 
+     %“affiliation–Instituto de F“’–i˝sica, Universidade Federal Fluminense, 24210-346, Niter“’–o˝i, RJ, %Brazil ˝ -->  <section inlist="toc" labels="LABEL:sec1" xml:id="S1">
+    <tags>
+      <tag>1</tag>
+      <tag role="autoref">section 1</tag>
+      <tag role="refnum">1</tag>
+      <tag role="typerefnum">§1</tag>
+    </tags>
+    <title><tag close=" ">1</tag>Introduction</title>
+    <para xml:id="S1.p1">
+      <p>Since 1950 the observation of solar energetic particles from the solar
+flares and coronal mass ejections (CMEs) have been done with ground-level experiments, such as the neutron monitors (NMs) <cite class="ltx_citemacro_citep">(<bibref bibrefs="meye56,simp00,mora00" separator=";" show="AuthorsPhrase1Year" yyseparator=",">
+            <bibrefphrase>, </bibrefphrase>
+          </bibref>)</cite>
+as well as the solar neutron telescope network <cite class="ltx_citemacro_citep">(<bibref bibrefs="hu22,vald09" separator=";" show="AuthorsPhrase1Year" yyseparator=",">
+            <bibrefphrase>, </bibrefphrase>
+          </bibref>)</cite><!--  %**** s2˙storm.tex Line 225 **** -->, all around the world.
+These observations have yielded a lot of new information. For instance, the existence of a prompt and gradual emission of solar energetic particles (SEP) in flares and CMEs, respectively, the correlations of the cosmic ray intensity with CMEs and other solar disturbances crossing the Earth, etc.
+<cite class="ltx_citemacro_citep">(<bibref bibrefs="chup87,mora00" separator=";" show="AuthorsPhrase1Year" yyseparator=",">
+            <bibrefphrase>, </bibrefphrase>
+          </bibref>)</cite></p>
+    </para>
+    <para xml:id="S1.p2">
+      <p>Also, the solar modulation of galactic cosmic rays is inversely correlated with solar activity, inferred through the number of sunspots, which can be the key to understanding more about space weather <cite class="ltx_citemacro_citep">(<bibref bibrefs="cade15" separator=";" show="AuthorsPhrase1Year" yyseparator=",">
+            <bibrefphrase>, </bibrefphrase>
+          </bibref>)</cite>.</p>
+    </para>
+    <para xml:id="S1.p3">
+      <p>Nowadays, particles accelerated to near the Sun can be detected by space-borne instruments such as the High-Energy Proton
+and Alpha Detector (HEPAD) on the Geostationary Operations Environmental Satellite (GOES) and the Advanced Composition Explorer (ACE) spacecraft at Lagrange L1 point, through the Electron Proton Alpha Monitor (EPAM) and the Solar Isotope Spectrometer (SIS), among others.</p>
+    </para>
+    <para xml:id="S1.p4">
+      <p>Not all of the solar energetic particles can be measured at ground level. Even those SEPs from solar events with a good geoeffectiveness can be dissipated by the IMF, or deflected or captured by the Earth’s magnetic</p>
+    </para>
+    <para xml:id="S1.p5">
+      <p>field or until absorbed by atmosphere.</p>
+    </para>
+    <para xml:id="S1.p6">
+      <p>On the other hand, ground-level enhancements (GLEs), typically in the MeV-GeV energy range, are sudden increases in cosmic ray intensities registered in most cases by NMs. GLEs are quite rare events, and fewer than 100 GLEs have been observed by NMs in the last 70 years. In most cases, the NMs that observed GLEs are located at regions with small geomagnetic rigidity cutoff, that is, at high latitudes <cite class="ltx_citemacro_citep">(<bibref bibrefs="shea12" separator=";" show="AuthorsPhrase1Year" yyseparator=",">
+            <bibrefphrase>, </bibrefphrase>
+          </bibref>)</cite>.</p>
+    </para>
+    <figure inlist="lof" labels="LABEL:saa_tupi" placement="th" xml:id="S1.F1">
+      <tags>
+        <tag>Figure 1</tag>
+        <tag role="autoref">Figure 1</tag>
+        <tag role="refnum">1</tag>
+        <tag role="typerefnum">Figure 1</tag>
+      </tags>
+      <graphics candidates="Fig1.png" class="ltx_centering" graphic="Fig1.png" options="clip=true,width=433.62pt,height=252.94499pt,angle=0." xml:id="S1.F1.g1"/>
+      <toccaption class="ltx_centering"><tag close=" ">1</tag>Top panel: strength of Earth’s magnetic field in 2000, according to measurements
+by the European Spacing Agency’s SWARM satellites.
+Bottom left panel: Corsika-Fluka simulation results of the lateral particle distribution in proton air-showers of cosmic rays,
+as detected from several ground level detectors. Bottom right panel: correlation between <Math mode="inline" tex="R_{max}" text="R _ (m * a * x)" xml:id="S1.F1.m1">
+          <XMath>
+            <XMApp>
+              <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+              <XMTok font="italic" role="UNKNOWN">R</XMTok>
+              <XMApp>
+                <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">m</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">a</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">x</XMTok>
+              </XMApp>
+            </XMApp>
+          </XMath>
+        </Math> (from Corsika-Fluka) versus the
+geomagnetic Stormer rigidity cutoff of six different places (black circles) including the SAA-CR region (blue square). The red solid line is a linear fit, and the two dotted red lines delimit the region
+with a confidence of
+<Math mode="inline" tex="\pm 1\sigma" text="plus-or-minus 1 * sigma" xml:id="S1.F1.m2">
+          <XMath>
+            <XMApp>
+              <XMTok meaning="plus-or-minus" name="pm" role="ADDOP">±</XMTok>
+              <XMApp>
+                <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                <XMTok meaning="1" role="NUMBER">1</XMTok>
+                <XMTok font="italic" name="sigma" role="UNKNOWN">σ</XMTok>
+              </XMApp>
+            </XMApp>
+          </XMath>
+        </Math>. </toccaption>
+      <caption class="ltx_centering"><tag close=": ">Figure 1</tag>Top panel: strength of Earth’s magnetic field in 2000, according to measurements
+by the European Spacing Agency’s SWARM satellites.
+Bottom left panel: Corsika-Fluka simulation results of the lateral particle distribution in proton air-showers of cosmic rays,
+as detected from several ground level detectors. Bottom right panel: correlation between <Math mode="inline" tex="R_{max}" text="R _ (m * a * x)" xml:id="S1.F1.m3">
+          <XMath>
+            <XMApp>
+              <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+              <XMTok font="italic" role="UNKNOWN">R</XMTok>
+              <XMApp>
+                <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">m</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">a</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">x</XMTok>
+              </XMApp>
+            </XMApp>
+          </XMath>
+        </Math> (from Corsika-Fluka) versus the
+geomagnetic Stormer rigidity cutoff of six different places (black circles) including the SAA-CR region (blue square). The red solid line is a linear fit, and the two dotted red lines delimit the region
+with a confidence of
+<Math mode="inline" tex="\pm 1\sigma" text="plus-or-minus 1 * sigma" xml:id="S1.F1.m4">
+          <XMath>
+            <XMApp>
+              <XMTok meaning="plus-or-minus" name="pm" role="ADDOP">±</XMTok>
+              <XMApp>
+                <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                <XMTok meaning="1" role="NUMBER">1</XMTok>
+                <XMTok font="italic" name="sigma" role="UNKNOWN">σ</XMTok>
+              </XMApp>
+            </XMApp>
+          </XMath>
+        </Math>. </caption>
+    </figure>
+    <para xml:id="S1.p7">
+      <p>The GLEs follow the solar radiation storms, solar energetic particles (mostly protons) observed by GOES. They occur when a large-scale magnetic eruption, a coronal mass ejection and associated solar flare, accelerates charged particles in the solar atmosphere to high energies.</p>
+    </para>
+    <para xml:id="S1.p8">
+      <p>However, in the present case, despite a radiation storm reaching above the S2-class on the NOAA scale on July 18, 2023, it did not generate a GLE, only a prompt emission of relativistic protons (ions) above GeV energies, during the phase eruptive, and observed by ground-level detectors strategically located, within the SAA central region (New-Tupi muon detector) and by the (Yangbagin muon telescope) at the Yangbajing Cosmic Ray Observatory (Tibet 4440 m a.s.l) <cite class="ltx_citemacro_citep">(<bibref bibrefs="zhan10" separator=";" show="AuthorsPhrase1Year" yyseparator=",">
+            <bibrefphrase>, </bibrefphrase>
+          </bibref>)</cite>.</p>
+    </para>
+    <para xml:id="S1.p9">
+      <p>Also, we looked for any signal in the counting rate at the Neutron Monitor’s (NM) network around the world from Neutron Monitor Data Base (NMDB)
+<ref class="ltx_url" font="sansserif" href="https://www.nmdb.eu/nest/">https://www.nmdb.eu/nest/</ref>, with negative results. However, we found a low confidence signal only at Kerguelen NM, at geographical coordinates (49.3S, 70.3E), altitude of 33 m a.s.l, and an effective vertical cutoff rigidity of 1.14 GV.
+We present details of these observations.</p>
+    </para>
+  </section>
+  <section inlist="toc" xml:id="S2">
+    <tags>
+      <tag>2</tag>
+      <tag role="autoref">section 2</tag>
+      <tag role="refnum">2</tag>
+      <tag role="typerefnum">§2</tag>
+    </tags>
+    <title><tag close=" ">2</tag>New-Tupi telescope within the South Atlantic Anomaly</title>
+    <para xml:id="S2.p1">
+      <p>The New-Tupi muon detector is completely
+unmoderated (without no surrounding lead or other material). The muon detection energy threshold is about 200 MeV (see Appendix A). That contrasts with other muon detectors that have, in most cases, a surrounding lead material with a thickness of up to 5 cm.</p>
+    </para>
+    <para xml:id="S2.p2">
+      <p>The shielding effect of the Earth’s magnetic field on cosmic ray particles is quantified by the magnetic rigidity cutoff from a specific location <cite class="ltx_citemacro_citep">(<bibref bibrefs="smar09" separator=";" show="AuthorsPhrase1Year" yyseparator=",">
+            <bibrefphrase>, </bibrefphrase>
+          </bibref>)</cite><!--  %**** s2˙storm.tex Line 275 **** -->. The smaller the rigidity cutoff, the lower the energy cosmic ray particles penetrate the magnetosphere.
+On the other hand, a restricted area between latitudes 20 and 40 of the southern hemisphere, over South America
+and the Atlantic Ocean poses a geomagnetic field
+with an anomalously lower intensity (around 22,000
+nT). The region is known as the South Atlantic Anomaly
+(SAA) <cite class="ltx_citemacro_citep">(<bibref bibrefs="pavo16" separator=";" show="AuthorsPhrase1Year" yyseparator=",">
+            <bibrefphrase>, </bibrefphrase>
+          </bibref>)</cite>. According to Swarm’s satellite observations
+<cite class="ltx_citemacro_citep">(<bibref bibrefs="finl20" separator=";" show="AuthorsPhrase1Year" yyseparator=",">
+            <bibrefphrase>, </bibrefphrase>
+          </bibref>)</cite>, the SAA appears splitting into two, a smaller area
+over the Atlantic Ocean in southwest Africa and a larger
+area over eastern South America. Fig. <ref labelref="LABEL:saa_tupi"/> (top panel) summarizes
+the situation. We would like to point out that
+the location of the New-Tupi telescope coincides with the central
+part of the SAA indicated by the arrow on the left
+of Fig. <ref labelref="LABEL:saa_tupi"/> (top panel).</p>
+    </para>
+    <para xml:id="S2.p3">
+      <p>The main effect of the SAA is on the satellites since
+the ’70s. We know the frequent failures when they pass
+through the SAA region. A large amount of charged
+particles precipitation in this region damages and perturbates
+the satellites’ electronics. Also, according to
+the results from the PAMELA detector at satellite’s altitudes
+<cite class="ltx_citemacro_citep">(<bibref bibrefs="caso09" separator=";" show="AuthorsPhrase1Year" yyseparator=",">
+            <bibrefphrase>, </bibrefphrase>
+          </bibref>)</cite>, the effect of geomagnetic cutoff on low-energy
+particles is present in high latitudes close to the poles
+and also in the SAA region, composed mostly of low energy
+cosmic protons (E <Math mode="inline" tex="&lt;" text="&lt;" xml:id="S2.p3.m1">
+          <XMath>
+            <XMTok meaning="less-than" role="RELOP">&lt;</XMTok>
+          </XMath>
+        </Math><!--  %**** s2˙storm.tex Line 300 **** --> 200 MeV ). In other words, the
+Pamella satellite has shown that the SAA introduces a
+sub-cutoff in the magnetic rigidity, below the Stormer’s
+magnetic rigidity cutoff.
+We show that the SAA also affects secondary cosmic
+rays detected at ground level. As the horizontal magnetic
+component on Earth’s surface is smaller on the
+SAA, the magnetic lateral dispersion of the secondary
+particles forming an air shower is smaller too. The effect
+increases the number of particles reaching a detector. In
+other words, this behavior mimics a magnetic rigidity
+sub-cutoff below the Stormer’s rigidity cutoff.
+We show that effect through a Monte Carlo simulation
+based on CORSIKA-Fluka code <cite class="ltx_citemacro_citep">(<bibref bibrefs="heck12,batt08" separator=";" show="AuthorsPhrase1Year" yyseparator=",">
+            <bibrefphrase>, </bibrefphrase>
+          </bibref>)</cite>, where <Math mode="inline" tex="1.0\times 10^{6}" text="1.0 * 10 ^ 6" xml:id="S2.p3.m2">
+          <XMath>
+            <XMApp>
+              <XMTok meaning="times" role="MULOP">×</XMTok>
+              <XMTok meaning="1.0" role="NUMBER">1.0</XMTok>
+              <XMApp>
+                <XMTok role="SUPERSCRIPTOP" scriptpos="post1"/>
+                <XMTok meaning="10" role="NUMBER">10</XMTok>
+                <XMTok fontsize="70%" meaning="6" role="NUMBER">6</XMTok>
+              </XMApp>
+            </XMApp>
+          </XMath>
+        </Math> proton
+air-showers are simulated, taking into account the magnetic
+coordinates (latitude, longitude) and height of several
+places where detectors are installed (mostly neutron
+monitors).</p>
+    </para>
+    <para xml:id="S2.p4">
+      <p>Fig. <ref labelref="LABEL:saa_tupi"/> bottom left panel shows the lateral particle distribution
+in air-showers of cosmic rays, as detected from
+several ground-level detectors. In all cases, there is a fast
+rise of particles with the shower lateral development until
+reach um maximum value that happens for different
+values of R, called hereafter as <Math mode="inline" tex="R_{max}" text="R _ (m * a * x)" xml:id="S2.p4.m1">
+          <XMath>
+            <XMApp>
+              <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+              <XMTok font="italic" role="UNKNOWN">R</XMTok>
+              <XMApp>
+                <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">m</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">a</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">x</XMTok>
+              </XMApp>
+            </XMApp>
+          </XMath>
+        </Math>
+We can see that the number of shower particles at
+<Math mode="inline" tex="R_{max}" text="R _ (m * a * x)" xml:id="S2.p4.m2">
+          <XMath>
+            <XMApp>
+              <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+              <XMTok font="italic" role="UNKNOWN">R</XMTok>
+              <XMApp>
+                <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">m</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">a</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">x</XMTok>
+              </XMApp>
+            </XMApp>
+          </XMath>
+        </Math><!--  %**** s2˙storm.tex Line 325 **** --> in the SAA central region (SAA-CR) rigidity 9.6
+GV is higher than at Rome and Athens, both with the
+rigidity of 6.3 GV, and 8.5 GV, respectively, i.e., minors
+than the SAA-CR.
+Already Fig. 1 bottom right panel, shows a correlation
+between <Math mode="inline" tex="R_{max}" text="R _ (m * a * x)" xml:id="S2.p4.m3">
+          <XMath>
+            <XMApp>
+              <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+              <XMTok font="italic" role="UNKNOWN">R</XMTok>
+              <XMApp>
+                <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">m</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">a</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">x</XMTok>
+              </XMApp>
+            </XMApp>
+          </XMath>
+        </Math> versus the geomagnetic Stormer rigidity
+cutoff of six different places (black circles), including the
+SAA-CR (blue square). The solid red line is a linear fit, and the two dotted red lines delimit the region with significance of <Math mode="inline" tex="\pm 1\sigma" text="plus-or-minus 1 * sigma" xml:id="S2.p4.m4">
+          <XMath>
+            <XMApp>
+              <XMTok meaning="plus-or-minus" name="pm" role="ADDOP">±</XMTok>
+              <XMApp>
+                <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                <XMTok meaning="1" role="NUMBER">1</XMTok>
+                <XMTok font="italic" name="sigma" role="UNKNOWN">σ</XMTok>
+              </XMApp>
+            </XMApp>
+          </XMath>
+        </Math>.
+Only two places are out from the <Math mode="inline" tex="\pm 1.0\sigma" text="plus-or-minus 1.0 * sigma" xml:id="S2.p4.m5">
+          <XMath>
+            <XMApp>
+              <XMTok meaning="plus-or-minus" name="pm" role="ADDOP">±</XMTok>
+              <XMApp>
+                <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                <XMTok meaning="1.0" role="NUMBER">1.0</XMTok>
+                <XMTok font="italic" name="sigma" role="UNKNOWN">σ</XMTok>
+              </XMApp>
+            </XMApp>
+          </XMath>
+        </Math> significance region, the Thule (Groenlandia) in the lowest rigidity region
+and SAA-CR in the highest rigidity region. The
+high Stormer’s rigidity of SAA-CR does not correspond
+to the high value of <Math mode="inline" tex="R_{max}" text="R _ (m * a * x)" xml:id="S2.p4.m6">
+          <XMath>
+            <XMApp>
+              <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+              <XMTok font="italic" role="UNKNOWN">R</XMTok>
+              <XMApp>
+                <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">m</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">a</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">x</XMTok>
+              </XMApp>
+            </XMApp>
+          </XMath>
+        </Math> expected by the correlation.
+From an interpolation, it is possible to see that the small
+value of <Math mode="inline" tex="R_{max}" text="R _ (m * a * x)" xml:id="S2.p4.m7">
+          <XMath>
+            <XMApp>
+              <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+              <XMTok font="italic" role="UNKNOWN">R</XMTok>
+              <XMApp>
+                <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">m</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">a</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">x</XMTok>
+              </XMApp>
+            </XMApp>
+          </XMath>
+        </Math> at SAA-CR correspond to the rigidity of
+only <Math mode="inline" tex="3.1^{+3.0}_{-1.7}" text="(3.1 ^ (+ 3.0)) _ (- 1.7)" xml:id="S2.p4.m8">
+          <XMath>
+            <XMApp>
+              <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+              <XMApp>
+                <XMTok role="SUPERSCRIPTOP" scriptpos="post1"/>
+                <XMTok meaning="3.1" role="NUMBER">3.1</XMTok>
+                <XMApp>
+                  <XMTok fontsize="70%" meaning="plus" role="ADDOP">+</XMTok>
+                  <XMTok fontsize="70%" meaning="3.0" role="NUMBER">3.0</XMTok>
+                </XMApp>
+              </XMApp>
+              <XMApp>
+                <XMTok fontsize="70%" meaning="minus" role="ADDOP">-</XMTok>
+                <XMTok fontsize="70%" meaning="1.7" role="NUMBER">1.7</XMTok>
+              </XMApp>
+            </XMApp>
+          </XMath>
+        </Math> GV, within a confidence of <Math mode="inline" tex="\pm 1.0\sigma" text="plus-or-minus 1.0 * sigma" xml:id="S2.p4.m9">
+          <XMath>
+            <XMApp>
+              <XMTok meaning="plus-or-minus" name="pm" role="ADDOP">±</XMTok>
+              <XMApp>
+                <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                <XMTok meaning="1.0" role="NUMBER">1.0</XMTok>
+                <XMTok font="italic" name="sigma" role="UNKNOWN">σ</XMTok>
+              </XMApp>
+            </XMApp>
+          </XMath>
+        </Math>.
+This behavior of having a location close to the Equator,
+with a nominal lower magnetic rigidity cutoff, favors the
+observation of phenomena such as the SEPs.</p>
+    </para>
+  </section>
+  <section inlist="toc" xml:id="S3">
+    <tags>
+      <tag>3</tag>
+      <tag role="autoref">section 3</tag>
+      <tag role="refnum">3</tag>
+      <tag role="typerefnum">§3</tag>
+    </tags>
+    <title><tag close=" ">3</tag>Analysis</title>
+    <para xml:id="S3.p1">
+      <p>On July 17, 2023, at <Math mode="inline" tex="\sim" text="similar-to" xml:id="S3.p1.m1">
+          <XMath>
+            <XMTok meaning="similar-to" name="sim" role="RELOP">∼</XMTok>
+          </XMath>
+        </Math>18h UT, the active region AR 13363 had an explosion, reaching an M6-class solar flare followed by a resplendent coronal mass ejection. Fig. <ref labelref="LABEL:flare_cme"/> left panel shows the image from the Solar Dynamo observatory of the blaze of fire responsible for the X-ray flux reaching M6-class flare. Already the right panel shows the LASCO-C2 coronograph image of its associated CME on July 18, 2023, at 00:42 UT.</p>
+    </para>
+    <para xml:id="S3.p2">
+      <p>NOAA prediction models confirmed that a CME originated in the powerful M6-class flare from sunspot AR3363 would pass through the magnetosphere on July 20, triggering at least a G1-class (minor) geomagnetic storm. However, no magnetic storms were observed.</p>
+    </para>
+    <figure inlist="lof" labels="LABEL:flare_cme" xml:id="S3.F2">
+      <tags>
+        <tag>Figure 2</tag>
+        <tag role="autoref">Figure 2</tag>
+        <tag role="refnum">2</tag>
+        <tag role="typerefnum">Figure 2</tag>
+      </tags>
+      <graphics candidates="Fig2.png" class="ltx_centering" graphic="Fig2.png" options="clip=true,width=242.82613pt,height=404.71353pt,angle=0." xml:id="S3.F2.g1"/>
+      <toccaption class="ltx_centering"><tag close=" ">2</tag>Left panel: NASA’s Solar Dynamics Observatory image of a blast near the sun’s southwestern limb, erupted from a big sunspot AR3363, with onset at the last hours of July 17, 2023.
+Right panel: LASCO-C2 coronograph image on July 18, 2023, at
+00:42 UT showing the CME eruption associated to M6-class flare with a speed of 1342 km/s.
+</toccaption>
+      <caption class="ltx_centering"><tag close=": ">Figure 2</tag>Left panel: NASA’s Solar Dynamics Observatory image of a blast near the sun’s southwestern limb, erupted from a big sunspot AR3363, with onset at the last hours of July 17, 2023.
+Right panel: LASCO-C2 coronograph image on July 18, 2023, at
+00:42 UT showing the CME eruption associated to M6-class flare with a speed of 1342 km/s.
+</caption>
+    </figure>
+    <para xml:id="S3.p3">
+      <p>Fig. <ref labelref="LABEL:goes_goes"/> shows the GOES-18 X-ray flux (upper panel) and the GOES-16 proton flux (bottom panel). The X-ray flux peaks at 18:00 UT, while the proton flux has two peaks. The first (in orange) is due to the acceleration of protons during the impulsive fast-rising phase of the flare peaking at 18:09 UT. The delay between the X-ray and proton flux peaks is because the proton velocity is slightly less than c, and the proton path is longer. The second peak are the protons accelerated by CME shocks, peaking at 18:14 UT, and it’s the so-called gradual phase and is characterized by its long duration, up to several days.</p>
+    </para>
+    <figure inlist="lof" labels="LABEL:goes_goes" xml:id="S3.F3">
+      <tags>
+        <tag>Figure 3</tag>
+        <tag role="autoref">Figure 3</tag>
+        <tag role="refnum">3</tag>
+        <tag role="typerefnum">Figure 3</tag>
+      </tags>
+      <graphics candidates="Fig3.png" class="ltx_centering" graphic="Fig3.png" options="clip=true,width=216.81pt,height=202.3529pt,angle=0." xml:id="S3.F3.g1"/>
+      <toccaption class="ltx_centering"><tag close=" ">3</tag>Top panel: GOES-18 X-ray flux in two wavelengths.
+Bottom panel: GOES-16 proton flux in three energy bands. Both on July 17-18, 2023. The orange area at the bottom (is a visual guide only) highlights the proton prompt emission during the flare impulsive phase.
+</toccaption>
+      <caption class="ltx_centering"><tag close=": ">Figure 3</tag>Top panel: GOES-18 X-ray flux in two wavelengths.
+Bottom panel: GOES-16 proton flux in three energy bands. Both on July 17-18, 2023. The orange area at the bottom (is a visual guide only) highlights the proton prompt emission during the flare impulsive phase.
+</caption>
+    </figure>
+    <figure inlist="lof" labels="LABEL:goes_tupi" xml:id="S3.F4">
+      <tags>
+        <tag>Figure 4</tag>
+        <tag role="autoref">Figure 4</tag>
+        <tag role="refnum">4</tag>
+        <tag role="typerefnum">Figure 4</tag>
+      </tags>
+      <graphics candidates="Fig4.png" class="ltx_centering" graphic="Fig4.png" options="clip=true,width=216.81pt,height=202.3529pt,angle=0." xml:id="S3.F4.g1"/>
+      <toccaption class="ltx_centering"><tag close=" ">4</tag>Top panel: GOES-16 proton flux in three energy bands. Bottom panel: New-Tupi counting rate expressed in variation (%). Both on July 17-18, 2023. The orange area at the top (is a visual guide only) highlights the proton prompt emission during the flare impulsive phase.
+</toccaption>
+      <caption class="ltx_centering"><tag close=": ">Figure 4</tag>Top panel: GOES-16 proton flux in three energy bands. Bottom panel: New-Tupi counting rate expressed in variation (%). Both on July 17-18, 2023. The orange area at the top (is a visual guide only) highlights the proton prompt emission during the flare impulsive phase.
+</caption>
+    </figure>
+<!--  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->    <para xml:id="S3.p4">
+      <p>Fig. <ref labelref="LABEL:goes_tupi"/> shows the temporal coincidence between the GOES proton flux in the impulsive phase and New-Tupi muon excess. Particles (mostly proton) are accelerated in this phase exclusively by the flare, during the fast-rising until to reach the first peak (orange sector) in Fig. <ref labelref="LABEL:goes_tupi"/>.</p>
+    </para>
+    <para xml:id="S3.p5">
+      <p>However, in the so-called gradual phase, protons accelerated by CME’s shocks, the proton flux does not reach the GeV energy range because there are no excess muons at ground level.</p>
+    </para>
+    <figure inlist="lof" labels="LABEL:quatro" xml:id="S3.F5">
+      <tags>
+        <tag>Figure 5</tag>
+        <tag role="autoref">Figure 5</tag>
+        <tag role="refnum">5</tag>
+        <tag role="typerefnum">Figure 5</tag>
+      </tags>
+      <graphics candidates="Fig5.png" class="ltx_centering" graphic="Fig5.png" options="clip=true,width=216.81pt,height=202.3529pt,angle=0." xml:id="S3.F5.g1"/>
+      <toccaption class="ltx_centering"><tag close=" ">5</tag>From top to bottom: GOES-16 proton flux in three energy bands, 2nd to 4th panels, counting rate at New-Tupi muon detector, Yan ba Jing muon telescope, and Kerguelen Neutron Monitor, respectively.
+To five consecutive days, from July 15-19, 2023.
+</toccaption>
+      <caption class="ltx_centering"><tag close=": ">Figure 5</tag>From top to bottom: GOES-16 proton flux in three energy bands, 2nd to 4th panels, counting rate at New-Tupi muon detector, Yan ba Jing muon telescope, and Kerguelen Neutron Monitor, respectively.
+To five consecutive days, from July 15-19, 2023.
+</caption>
+    </figure>
+<!--  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->  </section>
+  <section inlist="toc" xml:id="S4">
+    <tags>
+      <tag>4</tag>
+      <tag role="autoref">section 4</tag>
+      <tag role="refnum">4</tag>
+      <tag role="typerefnum">§4</tag>
+    </tags>
+    <title><tag close=" ">4</tag>Spectral analysis</title>
+    <para xml:id="S4.p1">
+      <p>We perform a Monte Carlo simulation of air showers initiated by SEP (protons) using the CORSIKA code <cite class="ltx_citemacro_citep">(<bibref bibrefs="heck12" separator=";" show="AuthorsPhrase1Year" yyseparator=",">
+            <bibrefphrase>, </bibrefphrase>
+          </bibref>)</cite>, together with the FLUKA interaction model <cite class="ltx_citemacro_citep">(<bibref bibrefs="batt08" separator=";" show="AuthorsPhrase1Year" yyseparator=",">
+            <bibrefphrase>, </bibrefphrase>
+          </bibref>)</cite>, that works well at GeV and sub-GeV energies, including secondary particle decay. The surviving particles are tracked through the atmosphere until they reach ground level (sea level). Most particles are muons with a small contribution of electrons and nucleons.</p>
+    </para>
+    <figure inlist="lof" labels="LABEL:yield2" xml:id="S4.F6">
+      <tags>
+        <tag>Figure 6</tag>
+        <tag role="autoref">Figure 6</tag>
+        <tag role="refnum">6</tag>
+        <tag role="typerefnum">Figure 6</tag>
+      </tags>
+      <graphics candidates="Fig6.png" class="ltx_centering" graphic="Fig6.png" options="clip=true,width=216.81pt,height=303.53708pt,angle=0." xml:id="S4.F6.g1"/>
+      <toccaption class="ltx_centering"><tag close=" ">6</tag>Yield function, as the number of muons at the sea level per
+proton (vertical incidence), as a function of incident proton energy, from CORSIKA-FLUKA simulations, taking into account the SAA’s central region magnetic conditions.
+The red dashed curve shows a fit function.
+</toccaption>
+      <caption class="ltx_centering"><tag close=": ">Figure 6</tag>Yield function, as the number of muons at the sea level per
+proton (vertical incidence), as a function of incident proton energy, from CORSIKA-FLUKA simulations, taking into account the SAA’s central region magnetic conditions.
+The red dashed curve shows a fit function.
+</caption>
+<!--  %**** s2˙storm.tex Line 425 **** -->    </figure>
+    <para xml:id="S4.p2">
+      <p>The aim is to obtain the yield function, <Math mode="inline" tex="S_{\mu}(E_{P})" text="S _ mu * E _ P" xml:id="S4.p2.m1">
+          <XMath>
+            <XMApp>
+              <XMTok meaning="times" role="MULOP">⁢</XMTok>
+              <XMApp>
+                <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                <XMTok font="italic" role="UNKNOWN">S</XMTok>
+                <XMTok font="italic" fontsize="70%" name="mu" role="UNKNOWN">μ</XMTok>
+              </XMApp>
+              <XMDual>
+                <XMRef idref="S4.p2.m1.1"/>
+                <XMWrap>
+                  <XMTok role="OPEN" stretchy="false">(</XMTok>
+                  <XMApp xml:id="S4.p2.m1.1">
+                    <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                    <XMTok font="italic" role="UNKNOWN">E</XMTok>
+                    <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                  </XMApp>
+                  <XMTok role="CLOSE" stretchy="false">)</XMTok>
+                </XMWrap>
+              </XMDual>
+            </XMApp>
+          </XMath>
+        </Math>, that is, the number of muons at sea level per primary proton, for an estimate of the upper limit of the integral proton flux in the GeV energy range, associated with the impulsive phase of M-6-class flare with onset on July 17, 2023, at <Math mode="inline" tex="\sim" text="similar-to" xml:id="S4.p2.m2">
+          <XMath>
+            <XMTok meaning="similar-to" name="sim" role="RELOP">∼</XMTok>
+          </XMath>
+        </Math> 18 UT.</p>
+    </para>
+    <figure inlist="lof" labels="LABEL:cruze" xml:id="S4.F7">
+      <tags>
+        <tag>Figure 7</tag>
+        <tag role="autoref">Figure 7</tag>
+        <tag role="refnum">7</tag>
+        <tag role="typerefnum">Figure 7</tag>
+      </tags>
+      <graphics candidates="Fig7.png" class="ltx_centering" graphic="Fig7.png" options="clip=true,width=238.49231pt,height=202.3529pt,angle=0." xml:id="S4.F7.g1"/>
+      <toccaption class="ltx_centering"><tag close=" ">7</tag>Correlation between the coefficient Ap and the spectral index <Math mode="inline" tex="\beta" text="beta" xml:id="S4.F7.m1">
+          <XMath>
+            <XMTok font="italic" name="beta" role="UNKNOWN">β</XMTok>
+          </XMath>
+        </Math>. All possible values of Ap and <Math mode="inline" tex="\beta" text="beta" xml:id="S4.F7.m2">
+          <XMath>
+            <XMTok font="italic" name="beta" role="UNKNOWN">β</XMTok>
+          </XMath>
+        </Math> compatible with the New-Tupi muon counting rate excess
+(black solid curve) and the high-energy GOES-16 proton fluence F (red dot curve). These quantities are defined by equations <ref labelref="LABEL:counting"/> and <ref labelref="LABEL:fluence"/>, respectively.
+</toccaption>
+      <caption class="ltx_centering"><tag close=": ">Figure 7</tag>Correlation between the coefficient Ap and the spectral index <Math mode="inline" tex="\beta" text="beta" xml:id="S4.F7.m3">
+          <XMath>
+            <XMTok font="italic" name="beta" role="UNKNOWN">β</XMTok>
+          </XMath>
+        </Math>. All possible values of Ap and <Math mode="inline" tex="\beta" text="beta" xml:id="S4.F7.m4">
+          <XMath>
+            <XMTok font="italic" name="beta" role="UNKNOWN">β</XMTok>
+          </XMath>
+        </Math> compatible with the New-Tupi muon counting rate excess
+(black solid curve) and the high-energy GOES-16 proton fluence F (red dot curve). These quantities are defined by equations <ref labelref="LABEL:counting"/> and <ref labelref="LABEL:fluence"/>, respectively.
+</caption>
+    </figure>
+    <para xml:id="S4.p3">
+      <p>Fig. <ref labelref="LABEL:yield2"/> (black squares) shows the Monte Carlo output under the New-Tupi geomagnetic conditions and vertical proton incidence, and fitting as</p>
+    </para>
+    <para xml:id="S4.p4">
+      <equation labels="LABEL:yield" xml:id="S4.E1">
+        <tags>
+          <tag>(1)</tag>
+          <tag role="autoref">Equation 1</tag>
+          <tag role="refnum">1</tag>
+        </tags>
+        <Math mode="display" tex="S_{\mu}(E_{P})=A_{\mu}E_{P}^{\nu}exp\left(-E_{0}/E_{P}\right)," text="S _ mu * E _ P = A _ mu * (E _ P) ^ nu * e * x * p * (- E _ 0 / E _ P)" xml:id="S4.E1.m1">
+          <XMath>
+            <XMDual>
+              <XMRef idref="S4.E1.m1.1"/>
+              <XMWrap>
+                <XMApp xml:id="S4.E1.m1.1">
+                  <XMTok meaning="equals" role="RELOP">=</XMTok>
+                  <XMApp>
+                    <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                    <XMApp>
+                      <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                      <XMTok font="italic" role="UNKNOWN">S</XMTok>
+                      <XMTok font="italic" fontsize="70%" name="mu" role="UNKNOWN">μ</XMTok>
+                    </XMApp>
+                    <XMDual>
+                      <XMRef idref="S4.E1.m1.1.1"/>
+                      <XMWrap>
+                        <XMTok role="OPEN" stretchy="false">(</XMTok>
+                        <XMApp xml:id="S4.E1.m1.1.1">
+                          <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                          <XMTok font="italic" role="UNKNOWN">E</XMTok>
+                          <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                        </XMApp>
+                        <XMTok role="CLOSE" stretchy="false">)</XMTok>
+                      </XMWrap>
+                    </XMDual>
+                  </XMApp>
+                  <XMApp>
+                    <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                    <XMApp>
+                      <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                      <XMTok font="italic" role="UNKNOWN">A</XMTok>
+                      <XMTok font="italic" fontsize="70%" name="mu" role="UNKNOWN">μ</XMTok>
+                    </XMApp>
+                    <XMApp>
+                      <XMTok role="SUPERSCRIPTOP" scriptpos="post1"/>
+                      <XMApp>
+                        <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                        <XMTok font="italic" role="UNKNOWN">E</XMTok>
+                        <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                      </XMApp>
+                      <XMTok font="italic" fontsize="70%" name="nu" role="UNKNOWN">ν</XMTok>
+                    </XMApp>
+                    <XMTok font="italic" role="UNKNOWN">e</XMTok>
+                    <XMTok font="italic" role="UNKNOWN">x</XMTok>
+                    <XMTok font="italic" role="UNKNOWN">p</XMTok>
+                    <XMDual>
+                      <XMRef idref="S4.E1.m1.1.2"/>
+                      <XMWrap>
+                        <XMTok role="OPEN" stretchy="true">(</XMTok>
+                        <XMApp xml:id="S4.E1.m1.1.2">
+                          <XMTok meaning="minus" role="ADDOP">-</XMTok>
+                          <XMApp>
+                            <XMTok meaning="divide" role="MULOP">/</XMTok>
+                            <XMApp>
+                              <XMTok role="SUBSCRIPTOP" scriptpos="post2"/>
+                              <XMTok font="italic" role="UNKNOWN">E</XMTok>
+                              <XMTok fontsize="70%" meaning="0" role="NUMBER">0</XMTok>
+                            </XMApp>
+                            <XMApp>
+                              <XMTok role="SUBSCRIPTOP" scriptpos="post2"/>
+                              <XMTok font="italic" role="UNKNOWN">E</XMTok>
+                              <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                            </XMApp>
+                          </XMApp>
+                        </XMApp>
+                        <XMTok role="CLOSE" stretchy="true">)</XMTok>
+                      </XMWrap>
+                    </XMDual>
+                  </XMApp>
+                </XMApp>
+                <XMTok role="PUNCT">,</XMTok>
+              </XMWrap>
+            </XMDual>
+          </XMath>
+        </Math>
+      </equation>
+    </para>
+    <para xml:id="S4.p5">
+      <p>where <Math mode="inline" tex="A_{\mu}=(6.8\pm 1.4)\times 10^{-3}" text="A _ mu = (6.8 plus-or-minus 1.4) * 10 ^ (- 3)" xml:id="S4.p5.m1">
+          <XMath>
+            <XMApp>
+              <XMTok meaning="equals" role="RELOP">=</XMTok>
+              <XMApp>
+                <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                <XMTok font="italic" role="UNKNOWN">A</XMTok>
+                <XMTok font="italic" fontsize="70%" name="mu" role="UNKNOWN">μ</XMTok>
+              </XMApp>
+              <XMApp>
+                <XMTok meaning="times" role="MULOP">×</XMTok>
+                <XMDual>
+                  <XMRef idref="S4.p5.m1.1"/>
+                  <XMWrap>
+                    <XMTok role="OPEN" stretchy="false">(</XMTok>
+                    <XMApp xml:id="S4.p5.m1.1">
+                      <XMTok meaning="plus-or-minus" name="pm" role="ADDOP">±</XMTok>
+                      <XMTok meaning="6.8" role="NUMBER">6.8</XMTok>
+                      <XMTok meaning="1.4" role="NUMBER">1.4</XMTok>
+                    </XMApp>
+                    <XMTok role="CLOSE" stretchy="false">)</XMTok>
+                  </XMWrap>
+                </XMDual>
+                <XMApp>
+                  <XMTok role="SUPERSCRIPTOP" scriptpos="post1"/>
+                  <XMTok meaning="10" role="NUMBER">10</XMTok>
+                  <XMApp>
+                    <XMTok fontsize="70%" meaning="minus" role="ADDOP">-</XMTok>
+                    <XMTok fontsize="70%" meaning="3" role="NUMBER">3</XMTok>
+                  </XMApp>
+                </XMApp>
+              </XMApp>
+            </XMApp>
+          </XMath>
+        </Math>, <Math mode="inline" tex="\nu=1.18\pm 0.24" text="nu = 1.18 plus-or-minus 0.24" xml:id="S4.p5.m2">
+          <XMath>
+            <XMApp>
+              <XMTok meaning="equals" role="RELOP">=</XMTok>
+              <XMTok font="italic" name="nu" role="UNKNOWN">ν</XMTok>
+              <XMApp>
+                <XMTok meaning="plus-or-minus" name="pm" role="ADDOP">±</XMTok>
+                <XMTok meaning="1.18" role="NUMBER">1.18</XMTok>
+                <XMTok meaning="0.24" role="NUMBER">0.24</XMTok>
+              </XMApp>
+            </XMApp>
+          </XMath>
+        </Math>, and <Math mode="inline" tex="E_{0}=10.2\pm 2.1" text="E _ 0 = 10.2 plus-or-minus 2.1" xml:id="S4.p5.m3">
+          <XMath>
+            <XMApp>
+              <XMTok meaning="equals" role="RELOP">=</XMTok>
+              <XMApp>
+                <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                <XMTok font="italic" role="UNKNOWN">E</XMTok>
+                <XMTok fontsize="70%" meaning="0" role="NUMBER">0</XMTok>
+              </XMApp>
+              <XMApp>
+                <XMTok meaning="plus-or-minus" name="pm" role="ADDOP">±</XMTok>
+                <XMTok meaning="10.2" role="NUMBER">10.2</XMTok>
+                <XMTok meaning="2.1" role="NUMBER">2.1</XMTok>
+              </XMApp>
+            </XMApp>
+          </XMath>
+        </Math> GeV. Fig. <ref labelref="LABEL:yield2"/> shows the fits (red dot line).</p>
+    </para>
+    <figure inlist="lof" labels="LABEL:tupi_flux" xml:id="S4.F8">
+      <tags>
+        <tag>Figure 8</tag>
+        <tag role="autoref">Figure 8</tag>
+        <tag role="refnum">8</tag>
+        <tag role="typerefnum">Figure 8</tag>
+      </tags>
+      <graphics candidates="Fig8.png" class="ltx_centering" graphic="Fig8.png" options="clip=true,width=260.17464pt,height=354.12144pt,angle=0." xml:id="S4.F8.g1"/>
+      <toccaption class="ltx_centering"><tag close=" ">8</tag>Integral proton flux: the red circles represent the GOES-16 data. It corresponds to the GOES-16 proton flux prompt emission (orange area in Fig. <ref labelref="LABEL:goes_goes"/>.
+The black square represents the proton flux obtained from
+the muon excess on the New-Tupi detector (and Monte Carlo calculations), observed in coincidence with
+the radiation storm.
+</toccaption>
+      <caption class="ltx_centering"><tag close=": ">Figure 8</tag>Integral proton flux: the red circles represent the GOES-16 data. It corresponds to the GOES-16 proton flux prompt emission (orange area in Fig. <ref labelref="LABEL:goes_goes"/>.
+The black square represents the proton flux obtained from
+the muon excess on the New-Tupi detector (and Monte Carlo calculations), observed in coincidence with
+the radiation storm.
+</caption>
+    </figure>
+    <para xml:id="S4.p6">
+      <p>In addition, we assume here that the energy spectrum of solar protons in the GeV energy range, which is in the high-energy tail of the SEP spectrum, can be fitted by a single power-law function.</p>
+    </para>
+    <para xml:id="S4.p7">
+      <equation labels="LABEL:power" xml:id="S4.E2">
+        <tags>
+          <tag>(2)</tag>
+          <tag role="autoref">Equation 2</tag>
+          <tag role="refnum">2</tag>
+        </tags>
+        <Math mode="display" tex="J_{P}(E_{P})=A_{P}E_{P}^{\beta}." text="J _ P * E _ P = A _ P * (E _ P) ^ beta" xml:id="S4.E2.m1">
+          <XMath>
+            <XMDual>
+              <XMRef idref="S4.E2.m1.1"/>
+              <XMWrap>
+                <XMApp xml:id="S4.E2.m1.1">
+                  <XMTok meaning="equals" role="RELOP">=</XMTok>
+                  <XMApp>
+                    <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                    <XMApp>
+                      <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                      <XMTok font="italic" role="UNKNOWN">J</XMTok>
+                      <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                    </XMApp>
+                    <XMDual>
+                      <XMRef idref="S4.E2.m1.1.1"/>
+                      <XMWrap>
+                        <XMTok role="OPEN" stretchy="false">(</XMTok>
+                        <XMApp xml:id="S4.E2.m1.1.1">
+                          <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                          <XMTok font="italic" role="UNKNOWN">E</XMTok>
+                          <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                        </XMApp>
+                        <XMTok role="CLOSE" stretchy="false">)</XMTok>
+                      </XMWrap>
+                    </XMDual>
+                  </XMApp>
+                  <XMApp>
+                    <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                    <XMApp>
+                      <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                      <XMTok font="italic" role="UNKNOWN">A</XMTok>
+                      <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                    </XMApp>
+                    <XMApp>
+                      <XMTok role="SUPERSCRIPTOP" scriptpos="post1"/>
+                      <XMApp>
+                        <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                        <XMTok font="italic" role="UNKNOWN">E</XMTok>
+                        <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                      </XMApp>
+                      <XMTok font="italic" fontsize="70%" name="beta" role="UNKNOWN">β</XMTok>
+                    </XMApp>
+                  </XMApp>
+                </XMApp>
+                <XMTok role="PERIOD">.</XMTok>
+              </XMWrap>
+            </XMDual>
+          </XMath>
+        </Math>
+      </equation>
+      <p>There are two unknown quantities in the above power-law function: the coefficient <Math mode="inline" tex="A_{P}" text="A _ P" xml:id="S4.p7.m1">
+          <XMath>
+            <XMApp>
+              <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+              <XMTok font="italic" role="UNKNOWN">A</XMTok>
+              <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+            </XMApp>
+          </XMath>
+        </Math> and the spectral index <Math mode="inline" tex="\beta" text="beta" xml:id="S4.p7.m2">
+          <XMath>
+            <XMTok font="italic" name="beta" role="UNKNOWN">β</XMTok>
+          </XMath>
+        </Math>.</p>
+    </para>
+    <para xml:id="S4.p8">
+      <p>A convolution between the yield function <Math mode="inline" tex="S_{\mu}(E_{P})" text="S _ mu * E _ P" xml:id="S4.p8.m1">
+          <XMath>
+            <XMApp>
+              <XMTok meaning="times" role="MULOP">⁢</XMTok>
+              <XMApp>
+                <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                <XMTok font="italic" role="UNKNOWN">S</XMTok>
+                <XMTok font="italic" fontsize="70%" name="mu" role="UNKNOWN">μ</XMTok>
+              </XMApp>
+              <XMDual>
+                <XMRef idref="S4.p8.m1.1"/>
+                <XMWrap>
+                  <XMTok role="OPEN" stretchy="false">(</XMTok>
+                  <XMApp xml:id="S4.p8.m1.1">
+                    <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                    <XMTok font="italic" role="UNKNOWN">E</XMTok>
+                    <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                  </XMApp>
+                  <XMTok role="CLOSE" stretchy="false">)</XMTok>
+                </XMWrap>
+              </XMDual>
+            </XMApp>
+          </XMath>
+        </Math> and the proton spectrum <Math mode="inline" tex="J_{P}(E_{P})" text="J _ P * E _ P" xml:id="S4.p8.m2">
+          <XMath>
+            <XMApp>
+              <XMTok meaning="times" role="MULOP">⁢</XMTok>
+              <XMApp>
+                <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                <XMTok font="italic" role="UNKNOWN">J</XMTok>
+                <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+              </XMApp>
+              <XMDual>
+                <XMRef idref="S4.p8.m2.1"/>
+                <XMWrap>
+                  <XMTok role="OPEN" stretchy="false">(</XMTok>
+                  <XMApp xml:id="S4.p8.m2.1">
+                    <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                    <XMTok font="italic" role="UNKNOWN">E</XMTok>
+                    <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                  </XMApp>
+                  <XMTok role="CLOSE" stretchy="false">)</XMTok>
+                </XMWrap>
+              </XMDual>
+            </XMApp>
+          </XMath>
+        </Math> gives the response function <cite class="ltx_citemacro_citep">(<bibref bibrefs="augu16b" separator=";" show="AuthorsPhrase1Year" yyseparator=",">
+            <bibrefphrase>, </bibrefphrase>
+          </bibref>)</cite>, which is the number of muons in the excess signal at New-Tupi detector generated by the SEP during the period T. We express this convolution as</p>
+    </para>
+    <para xml:id="S4.p9">
+      <equation labels="LABEL:counting" xml:id="S4.E3">
+        <tags>
+          <tag>(3)</tag>
+          <tag role="autoref">Equation 3</tag>
+          <tag role="refnum">3</tag>
+        </tags>
+        <Math mode="display" tex="J_{\mu}=\int_{E_{min}}^{\infty}S_{\mu}(E_{P})F(\theta)A_{P}E_{P}^{\beta}dE_{P}," text="J _ mu = ((integral _ E _ (m * i * n)) ^ infinity)@(S _ mu * E _ P * F * theta * A _ P * (E _ P) ^ beta * differential-d@(E _ P))" xml:id="S4.E3.m1">
+          <XMath>
+            <XMDual>
+              <XMRef idref="S4.E3.m1.2"/>
+              <XMWrap>
+                <XMApp xml:id="S4.E3.m1.2">
+                  <XMTok meaning="equals" role="RELOP">=</XMTok>
+                  <XMApp>
+                    <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                    <XMTok font="italic" role="UNKNOWN">J</XMTok>
+                    <XMTok font="italic" fontsize="70%" name="mu" role="UNKNOWN">μ</XMTok>
+                  </XMApp>
+                  <XMApp>
+                    <XMApp>
+                      <XMTok role="SUPERSCRIPTOP" scriptpos="post1"/>
+                      <XMApp>
+                        <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                        <XMTok mathstyle="display" meaning="integral" name="int" role="INTOP">∫</XMTok>
+                        <XMApp>
+                          <XMTok role="SUBSCRIPTOP" scriptpos="post2"/>
+                          <XMTok font="italic" fontsize="70%" role="UNKNOWN">E</XMTok>
+                          <XMApp>
+                            <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                            <XMTok font="italic" fontsize="50%" role="UNKNOWN">m</XMTok>
+                            <XMTok font="italic" fontsize="50%" role="UNKNOWN">i</XMTok>
+                            <XMTok font="italic" fontsize="50%" role="UNKNOWN">n</XMTok>
+                          </XMApp>
+                        </XMApp>
+                      </XMApp>
+                      <XMTok fontsize="70%" meaning="infinity" name="infty" role="ID">∞</XMTok>
+                    </XMApp>
+                    <XMApp>
+                      <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                      <XMApp>
+                        <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                        <XMTok font="italic" role="UNKNOWN">S</XMTok>
+                        <XMTok font="italic" fontsize="70%" name="mu" role="UNKNOWN">μ</XMTok>
+                      </XMApp>
+                      <XMDual>
+                        <XMRef idref="S4.E3.m1.2.1"/>
+                        <XMWrap>
+                          <XMTok role="OPEN" stretchy="false">(</XMTok>
+                          <XMApp xml:id="S4.E3.m1.2.1">
+                            <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                            <XMTok font="italic" role="UNKNOWN">E</XMTok>
+                            <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                          </XMApp>
+                          <XMTok role="CLOSE" stretchy="false">)</XMTok>
+                        </XMWrap>
+                      </XMDual>
+                      <XMTok font="italic" role="UNKNOWN">F</XMTok>
+                      <XMDual>
+                        <XMRef idref="S4.E3.m1.1"/>
+                        <XMWrap>
+                          <XMTok role="OPEN" stretchy="false">(</XMTok>
+                          <XMTok font="italic" name="theta" role="UNKNOWN" xml:id="S4.E3.m1.1">θ</XMTok>
+                          <XMTok role="CLOSE" stretchy="false">)</XMTok>
+                        </XMWrap>
+                      </XMDual>
+                      <XMApp>
+                        <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                        <XMTok font="italic" role="UNKNOWN">A</XMTok>
+                        <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                      </XMApp>
+                      <XMApp>
+                        <XMTok role="SUPERSCRIPTOP" scriptpos="post1"/>
+                        <XMApp>
+                          <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                          <XMTok font="italic" role="UNKNOWN">E</XMTok>
+                          <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                        </XMApp>
+                        <XMTok font="italic" fontsize="70%" name="beta" role="UNKNOWN">β</XMTok>
+                      </XMApp>
+                      <XMApp>
+                        <XMTok font="italic" meaning="differential-d" role="DIFFOP">d</XMTok>
+                        <XMApp>
+                          <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                          <XMTok font="italic" role="UNKNOWN">E</XMTok>
+                          <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                        </XMApp>
+                      </XMApp>
+                    </XMApp>
+                  </XMApp>
+                </XMApp>
+                <XMTok role="PUNCT">,</XMTok>
+              </XMWrap>
+            </XMDual>
+          </XMath>
+        </Math>
+      </equation>
+    </para>
+    <para xml:id="S4.p10">
+      <p>where <Math mode="inline" tex="F(\theta)\sim\exp(\theta/C)" text="F * theta similar-to exponential@(theta / C)" xml:id="S4.p10.m1">
+          <XMath>
+            <XMApp>
+              <XMTok meaning="similar-to" name="sim" role="RELOP">∼</XMTok>
+              <XMApp>
+                <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                <XMTok font="italic" role="UNKNOWN">F</XMTok>
+                <XMDual>
+                  <XMRef idref="S4.p10.m1.1"/>
+                  <XMWrap>
+                    <XMTok role="OPEN" stretchy="false">(</XMTok>
+                    <XMTok font="italic" name="theta" role="UNKNOWN" xml:id="S4.p10.m1.1">θ</XMTok>
+                    <XMTok role="CLOSE" stretchy="false">)</XMTok>
+                  </XMWrap>
+                </XMDual>
+              </XMApp>
+              <XMDual>
+                <XMApp>
+                  <XMRef idref="S4.p10.m1.2"/>
+                  <XMRef idref="S4.p10.m1.3"/>
+                </XMApp>
+                <XMApp>
+                  <XMTok meaning="exponential" role="OPFUNCTION" xml:id="S4.p10.m1.2">exp</XMTok>
+                  <XMWrap>
+                    <XMTok role="OPEN" stretchy="false">(</XMTok>
+                    <XMApp xml:id="S4.p10.m1.3">
+                      <XMTok meaning="divide" role="MULOP">/</XMTok>
+                      <XMTok font="italic" name="theta" role="UNKNOWN">θ</XMTok>
+                      <XMTok font="italic" role="UNKNOWN">C</XMTok>
+                    </XMApp>
+                    <XMTok role="CLOSE" stretchy="false">)</XMTok>
+                  </XMWrap>
+                </XMApp>
+              </XMDual>
+            </XMApp>
+          </XMath>
+        </Math> is the pitch angle distribution <cite class="ltx_citemacro_citep">(<bibref bibrefs="shea82,miro05" separator=";" show="AuthorsPhrase1Year" yyseparator=",">
+            <bibrefphrase>, </bibrefphrase>
+          </bibref>)</cite>. In the central region of SAA (New-Tupi), the transverse geomagnetic component is only <Math mode="inline" tex="B_{\perp}=18.3" text="B _ perpendicular-to = 18.3" xml:id="S4.p10.m2">
+          <XMath>
+            <XMApp>
+              <XMTok meaning="equals" role="RELOP">=</XMTok>
+              <XMApp>
+                <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                <XMTok font="italic" role="UNKNOWN">B</XMTok>
+                <XMTok fontsize="70%" meaning="perpendicular-to" name="perp" role="RELOP">⟂</XMTok>
+              </XMApp>
+              <XMTok meaning="18.3" role="NUMBER">18.3</XMTok>
+            </XMApp>
+          </XMath>
+        </Math> mT, that is, almost 80% smaller than the transverse component, at the same latitude, but outside from the SAA region, favoring the focusing factor of the geomagnetic parallel geomagnetic on the incident solar protons (small pitch angles).
+For the present event, we found <Math mode="inline" tex="\exp(\theta/C)\sim 1" text="exponential@(theta / C) similar-to 1" xml:id="S4.p10.m3">
+          <XMath>
+            <XMApp>
+              <XMTok meaning="similar-to" name="sim" role="RELOP">∼</XMTok>
+              <XMDual>
+                <XMApp>
+                  <XMRef idref="S4.p10.m3.1"/>
+                  <XMRef idref="S4.p10.m3.2"/>
+                </XMApp>
+                <XMApp>
+                  <XMTok meaning="exponential" role="OPFUNCTION" xml:id="S4.p10.m3.1">exp</XMTok>
+                  <XMWrap>
+                    <XMTok role="OPEN" stretchy="false">(</XMTok>
+                    <XMApp xml:id="S4.p10.m3.2">
+                      <XMTok meaning="divide" role="MULOP">/</XMTok>
+                      <XMTok font="italic" name="theta" role="UNKNOWN">θ</XMTok>
+                      <XMTok font="italic" role="UNKNOWN">C</XMTok>
+                    </XMApp>
+                    <XMTok role="CLOSE" stretchy="false">)</XMTok>
+                  </XMWrap>
+                </XMApp>
+              </XMDual>
+              <XMTok meaning="1" role="NUMBER">1</XMTok>
+            </XMApp>
+          </XMath>
+        </Math>.</p>
+    </para>
+    <para xml:id="S4.p11">
+      <p>The muon excess associated with protons emitted during the impulsive phase (see Fig. <ref labelref="LABEL:goes_tupi"/>), and considering an effective angular aperture of 60 degrees around the zenith of the New-Tupi detector, the counting rate excess is</p>
+      <equation xml:id="S4.E4">
+        <tags>
+          <tag>(4)</tag>
+          <tag role="autoref">Equation 4</tag>
+          <tag role="refnum">4</tag>
+        </tags>
+        <Math mode="display" tex="J_{\mu}=(3.20\pm 2.51)\times 10^{-3}muons/(cm^{2}\;s\;sr)," text="J _ mu = ((3.20 plus-or-minus 2.51) * 10 ^ (- 3) * m * u * o * n * s) / (c * m ^ 2 * s * s * r)" xml:id="S4.E4.m1">
+          <XMath>
+            <XMDual>
+              <XMRef idref="S4.E4.m1.1"/>
+              <XMWrap>
+                <XMApp xml:id="S4.E4.m1.1">
+                  <XMTok meaning="equals" role="RELOP">=</XMTok>
+                  <XMApp>
+                    <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                    <XMTok font="italic" role="UNKNOWN">J</XMTok>
+                    <XMTok font="italic" fontsize="70%" name="mu" role="UNKNOWN">μ</XMTok>
+                  </XMApp>
+                  <XMApp>
+                    <XMTok meaning="divide" role="MULOP">/</XMTok>
+                    <XMApp>
+                      <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                      <XMApp>
+                        <XMTok meaning="times" role="MULOP">×</XMTok>
+                        <XMDual>
+                          <XMRef idref="S4.E4.m1.1.1"/>
+                          <XMWrap>
+                            <XMTok role="OPEN" stretchy="false">(</XMTok>
+                            <XMApp xml:id="S4.E4.m1.1.1">
+                              <XMTok meaning="plus-or-minus" name="pm" role="ADDOP">±</XMTok>
+                              <XMTok meaning="3.20" role="NUMBER">3.20</XMTok>
+                              <XMTok meaning="2.51" role="NUMBER">2.51</XMTok>
+                            </XMApp>
+                            <XMTok role="CLOSE" stretchy="false">)</XMTok>
+                          </XMWrap>
+                        </XMDual>
+                        <XMApp>
+                          <XMTok role="SUPERSCRIPTOP" scriptpos="post1"/>
+                          <XMTok meaning="10" role="NUMBER">10</XMTok>
+                          <XMApp>
+                            <XMTok fontsize="70%" meaning="minus" role="ADDOP">-</XMTok>
+                            <XMTok fontsize="70%" meaning="3" role="NUMBER">3</XMTok>
+                          </XMApp>
+                        </XMApp>
+                      </XMApp>
+                      <XMTok font="italic" role="UNKNOWN">m</XMTok>
+                      <XMTok font="italic" role="UNKNOWN">u</XMTok>
+                      <XMTok font="italic" role="UNKNOWN">o</XMTok>
+                      <XMTok font="italic" role="UNKNOWN">n</XMTok>
+                      <XMTok font="italic" role="UNKNOWN">s</XMTok>
+                    </XMApp>
+                    <XMDual>
+                      <XMRef idref="S4.E4.m1.1.2"/>
+                      <XMWrap>
+                        <XMTok role="OPEN" stretchy="false">(</XMTok>
+                        <XMApp xml:id="S4.E4.m1.1.2">
+                          <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                          <XMTok font="italic" role="UNKNOWN">c</XMTok>
+                          <XMApp rpadding="2.8pt">
+                            <XMTok role="SUPERSCRIPTOP" scriptpos="post1"/>
+                            <XMTok font="italic" role="UNKNOWN">m</XMTok>
+                            <XMTok fontsize="70%" meaning="2" role="NUMBER">2</XMTok>
+                          </XMApp>
+                          <XMTok font="italic" role="UNKNOWN" rpadding="2.8pt">s</XMTok>
+                          <XMTok font="italic" role="UNKNOWN">s</XMTok>
+                          <XMTok font="italic" role="UNKNOWN">r</XMTok>
+                        </XMApp>
+                        <XMTok role="CLOSE" stretchy="false">)</XMTok>
+                      </XMWrap>
+                    </XMDual>
+                  </XMApp>
+                </XMApp>
+                <XMTok role="PUNCT">,</XMTok>
+              </XMWrap>
+            </XMDual>
+          </XMath>
+        </Math>
+      </equation>
+    </para>
+    <para xml:id="S4.p12">
+      <p>Furthermore, we also obtain the integrated time primary
+fluence as</p>
+      <equation labels="LABEL:fluence" xml:id="S4.E5">
+        <tags>
+          <tag>(5)</tag>
+          <tag role="autoref">Equation 5</tag>
+          <tag role="refnum">5</tag>
+        </tags>
+        <Math mode="display" tex="F=T\left[\int_{E_{min}}^{\infty}dE_{P}A_{P}E_{P}^{\beta}E_{P}\right]." text="F = T * delimited-[]@(((integral _ E _ (m * i * n)) ^ infinity)@(differential-d@(E _ P) * A _ P * (E _ P) ^ beta * E _ P))" xml:id="S4.E5.m1">
+          <XMath>
+            <XMDual>
+              <XMRef idref="S4.E5.m1.1"/>
+              <XMWrap>
+                <XMApp xml:id="S4.E5.m1.1">
+                  <XMTok meaning="equals" role="RELOP">=</XMTok>
+                  <XMTok font="italic" role="UNKNOWN">F</XMTok>
+                  <XMApp>
+                    <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                    <XMTok font="italic" role="UNKNOWN">T</XMTok>
+                    <XMDual>
+                      <XMApp>
+                        <XMTok meaning="delimited-[]"/>
+                        <XMRef idref="S4.E5.m1.1.1"/>
+                      </XMApp>
+                      <XMWrap>
+                        <XMTok role="OPEN" stretchy="true">[</XMTok>
+                        <XMApp xml:id="S4.E5.m1.1.1">
+                          <XMApp>
+                            <XMTok role="SUPERSCRIPTOP" scriptpos="post2"/>
+                            <XMApp>
+                              <XMTok role="SUBSCRIPTOP" scriptpos="post2"/>
+                              <XMTok mathstyle="display" meaning="integral" name="int" role="INTOP">∫</XMTok>
+                              <XMApp>
+                                <XMTok role="SUBSCRIPTOP" scriptpos="post3"/>
+                                <XMTok font="italic" fontsize="70%" role="UNKNOWN">E</XMTok>
+                                <XMApp>
+                                  <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                                  <XMTok font="italic" fontsize="50%" role="UNKNOWN">m</XMTok>
+                                  <XMTok font="italic" fontsize="50%" role="UNKNOWN">i</XMTok>
+                                  <XMTok font="italic" fontsize="50%" role="UNKNOWN">n</XMTok>
+                                </XMApp>
+                              </XMApp>
+                            </XMApp>
+                            <XMTok fontsize="70%" meaning="infinity" name="infty" role="ID">∞</XMTok>
+                          </XMApp>
+                          <XMApp>
+                            <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                            <XMApp>
+                              <XMTok font="italic" meaning="differential-d" role="DIFFOP">d</XMTok>
+                              <XMApp>
+                                <XMTok role="SUBSCRIPTOP" scriptpos="post2"/>
+                                <XMTok font="italic" role="UNKNOWN">E</XMTok>
+                                <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                              </XMApp>
+                            </XMApp>
+                            <XMApp>
+                              <XMTok role="SUBSCRIPTOP" scriptpos="post2"/>
+                              <XMTok font="italic" role="UNKNOWN">A</XMTok>
+                              <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                            </XMApp>
+                            <XMApp>
+                              <XMTok role="SUPERSCRIPTOP" scriptpos="post2"/>
+                              <XMApp>
+                                <XMTok role="SUBSCRIPTOP" scriptpos="post2"/>
+                                <XMTok font="italic" role="UNKNOWN">E</XMTok>
+                                <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                              </XMApp>
+                              <XMTok font="italic" fontsize="70%" name="beta" role="UNKNOWN">β</XMTok>
+                            </XMApp>
+                            <XMApp>
+                              <XMTok role="SUBSCRIPTOP" scriptpos="post2"/>
+                              <XMTok font="italic" role="UNKNOWN">E</XMTok>
+                              <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                            </XMApp>
+                          </XMApp>
+                        </XMApp>
+                        <XMTok role="CLOSE" stretchy="true">]</XMTok>
+                      </XMWrap>
+                    </XMDual>
+                  </XMApp>
+                </XMApp>
+                <XMTok role="PERIOD">.</XMTok>
+              </XMWrap>
+            </XMDual>
+          </XMath>
+        </Math>
+      </equation>
+    </para>
+    <para xml:id="S4.p13">
+      <p>For the present case, the GOES-proton fluence in the high-energy region (Ep<Math mode="inline" tex="\geq" text="&gt;=" xml:id="S4.p13.m1">
+          <XMath>
+            <XMTok meaning="greater-than-or-equals" name="geq" role="RELOP">≥</XMTok>
+          </XMath>
+        </Math>50) MeV is</p>
+      <equation xml:id="S4.E6">
+        <tags>
+          <tag>(6)</tag>
+          <tag role="autoref">Equation 6</tag>
+          <tag role="refnum">6</tag>
+        </tags>
+        <Math mode="display" tex="F\sim(46.0\pm 34.9)\;MeV/(cm^{2}sr)," text="F similar-to ((46.0 plus-or-minus 34.9) * M * e * V) / (c * m ^ 2 * s * r)" xml:id="S4.E6.m1">
+          <XMath>
+            <XMDual>
+              <XMRef idref="S4.E6.m1.1"/>
+              <XMWrap>
+                <XMApp xml:id="S4.E6.m1.1">
+                  <XMTok meaning="similar-to" name="sim" role="RELOP">∼</XMTok>
+                  <XMTok font="italic" role="UNKNOWN">F</XMTok>
+                  <XMApp>
+                    <XMTok meaning="divide" role="MULOP">/</XMTok>
+                    <XMApp>
+                      <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                      <XMDual>
+                        <XMRef idref="S4.E6.m1.1.1"/>
+                        <XMWrap>
+                          <XMTok role="OPEN" stretchy="false">(</XMTok>
+                          <XMApp xml:id="S4.E6.m1.1.1">
+                            <XMTok meaning="plus-or-minus" name="pm" role="ADDOP">±</XMTok>
+                            <XMTok meaning="46.0" role="NUMBER">46.0</XMTok>
+                            <XMTok meaning="34.9" role="NUMBER">34.9</XMTok>
+                          </XMApp>
+                          <XMTok role="CLOSE" rpadding="2.8pt" stretchy="false">)</XMTok>
+                        </XMWrap>
+                      </XMDual>
+                      <XMTok font="italic" role="UNKNOWN">M</XMTok>
+                      <XMTok font="italic" role="UNKNOWN">e</XMTok>
+                      <XMTok font="italic" role="UNKNOWN">V</XMTok>
+                    </XMApp>
+                    <XMDual>
+                      <XMRef idref="S4.E6.m1.1.2"/>
+                      <XMWrap>
+                        <XMTok role="OPEN" stretchy="false">(</XMTok>
+                        <XMApp xml:id="S4.E6.m1.1.2">
+                          <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                          <XMTok font="italic" role="UNKNOWN">c</XMTok>
+                          <XMApp>
+                            <XMTok role="SUPERSCRIPTOP" scriptpos="post1"/>
+                            <XMTok font="italic" role="UNKNOWN">m</XMTok>
+                            <XMTok fontsize="70%" meaning="2" role="NUMBER">2</XMTok>
+                          </XMApp>
+                          <XMTok font="italic" role="UNKNOWN">s</XMTok>
+                          <XMTok font="italic" role="UNKNOWN">r</XMTok>
+                        </XMApp>
+                        <XMTok role="CLOSE" stretchy="false">)</XMTok>
+                      </XMWrap>
+                    </XMDual>
+                  </XMApp>
+                </XMApp>
+                <XMTok role="PUNCT">,</XMTok>
+              </XMWrap>
+            </XMDual>
+          </XMath>
+        </Math>
+      </equation>
+    </para>
+    <para xml:id="S4.p14">
+      <p>The terms on the left side of Eq. <ref labelref="LABEL:yield"/> and Eq. <ref labelref="LABEL:fluence"/> are known. Thus, we can consider all possible values of <Math mode="inline" tex="\beta" text="beta" xml:id="S4.p14.m1">
+          <XMath>
+            <XMTok font="italic" name="beta" role="UNKNOWN">β</XMTok>
+          </XMath>
+        </Math> and <Math mode="inline" tex="A_{P}" text="A _ P" xml:id="S4.p14.m2">
+          <XMath>
+            <XMApp>
+              <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+              <XMTok font="italic" role="UNKNOWN">A</XMTok>
+              <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+            </XMApp>
+          </XMath>
+        </Math> compatible with the observed muon counting rate excess, <Math mode="inline" tex="J_{\mu}" text="J _ mu" xml:id="S4.p14.m3">
+          <XMath>
+            <XMApp>
+              <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+              <XMTok font="italic" role="UNKNOWN">J</XMTok>
+              <XMTok font="italic" fontsize="70%" name="mu" role="UNKNOWN">μ</XMTok>
+            </XMApp>
+          </XMath>
+        </Math>, and the integrated GOES-proton fluence <Math mode="inline" tex="F" text="F" xml:id="S4.p14.m4">
+          <XMath>
+            <XMTok font="italic" role="UNKNOWN">F</XMTok>
+          </XMath>
+        </Math>. Fig. <ref labelref="LABEL:cruze"/> summarizes the situation. Giving:<break/><Math mode="inline" tex="Ap=(1.20\pm 0.96)\times 10^{-3}/(cm^{2}s\;sr\;GeV)" text="A * p = ((1.20 plus-or-minus 0.96) * 10 ^ (- 3)) / (c * m ^ 2 * s * s * r * G * e * V)" xml:id="S4.p14.m5">
+          <XMath>
+            <XMApp>
+              <XMTok meaning="equals" role="RELOP">=</XMTok>
+              <XMApp>
+                <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                <XMTok font="italic" role="UNKNOWN">A</XMTok>
+                <XMTok font="italic" role="UNKNOWN">p</XMTok>
+              </XMApp>
+              <XMApp>
+                <XMTok meaning="divide" role="MULOP">/</XMTok>
+                <XMApp>
+                  <XMTok meaning="times" role="MULOP">×</XMTok>
+                  <XMDual>
+                    <XMRef idref="S4.p14.m5.1"/>
+                    <XMWrap>
+                      <XMTok role="OPEN" stretchy="false">(</XMTok>
+                      <XMApp xml:id="S4.p14.m5.1">
+                        <XMTok meaning="plus-or-minus" name="pm" role="ADDOP">±</XMTok>
+                        <XMTok meaning="1.20" role="NUMBER">1.20</XMTok>
+                        <XMTok meaning="0.96" role="NUMBER">0.96</XMTok>
+                      </XMApp>
+                      <XMTok role="CLOSE" stretchy="false">)</XMTok>
+                    </XMWrap>
+                  </XMDual>
+                  <XMApp>
+                    <XMTok role="SUPERSCRIPTOP" scriptpos="post1"/>
+                    <XMTok meaning="10" role="NUMBER">10</XMTok>
+                    <XMApp>
+                      <XMTok fontsize="70%" meaning="minus" role="ADDOP">-</XMTok>
+                      <XMTok fontsize="70%" meaning="3" role="NUMBER">3</XMTok>
+                    </XMApp>
+                  </XMApp>
+                </XMApp>
+                <XMDual>
+                  <XMRef idref="S4.p14.m5.2"/>
+                  <XMWrap>
+                    <XMTok role="OPEN" stretchy="false">(</XMTok>
+                    <XMApp xml:id="S4.p14.m5.2">
+                      <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                      <XMTok font="italic" role="UNKNOWN">c</XMTok>
+                      <XMApp>
+                        <XMTok role="SUPERSCRIPTOP" scriptpos="post1"/>
+                        <XMTok font="italic" role="UNKNOWN">m</XMTok>
+                        <XMTok fontsize="70%" meaning="2" role="NUMBER">2</XMTok>
+                      </XMApp>
+                      <XMTok font="italic" role="UNKNOWN" rpadding="2.8pt">s</XMTok>
+                      <XMTok font="italic" role="UNKNOWN">s</XMTok>
+                      <XMTok font="italic" role="UNKNOWN" rpadding="2.8pt">r</XMTok>
+                      <XMTok font="italic" role="UNKNOWN">G</XMTok>
+                      <XMTok font="italic" role="UNKNOWN">e</XMTok>
+                      <XMTok font="italic" role="UNKNOWN">V</XMTok>
+                    </XMApp>
+                    <XMTok role="CLOSE" stretchy="false">)</XMTok>
+                  </XMWrap>
+                </XMDual>
+              </XMApp>
+            </XMApp>
+          </XMath>
+        </Math><break/>and <Math mode="inline" tex="\beta=1.89\pm 1.10" text="beta = 1.89 plus-or-minus 1.10" xml:id="S4.p14.m6">
+          <XMath>
+            <XMApp>
+              <XMTok meaning="equals" role="RELOP">=</XMTok>
+              <XMTok font="italic" name="beta" role="UNKNOWN">β</XMTok>
+              <XMApp>
+                <XMTok meaning="plus-or-minus" name="pm" role="ADDOP">±</XMTok>
+                <XMTok meaning="1.89" role="NUMBER">1.89</XMTok>
+                <XMTok meaning="1.10" role="NUMBER">1.10</XMTok>
+              </XMApp>
+            </XMApp>
+          </XMath>
+        </Math>.</p>
+    </para>
+    <para xml:id="S4.p15">
+      <p>To make a comparison with satellite GOES data, we obtain the integral proton flux in the GeV energy range as</p>
+      <equation xml:id="S4.E7">
+        <tags>
+          <tag>(7)</tag>
+          <tag role="autoref">Equation 7</tag>
+          <tag role="refnum">7</tag>
+        </tags>
+        <Math mode="display" tex="J_{P}(&gt;E_{P})=\int_{Emin}^{\infty}A_{P}E_{P}^{-\beta}dE_{P}." text="annotated@(J _ P, absent &gt; E _ P) = ((integral _ (E * m * i * n)) ^ infinity)@(A _ P * (E _ P) ^ (- beta) * differential-d@(E _ P))" xml:id="S4.E7.m1">
+          <XMath>
+            <XMDual>
+              <XMRef idref="S4.E7.m1.1"/>
+              <XMWrap>
+                <XMApp xml:id="S4.E7.m1.1">
+                  <XMTok meaning="equals" role="RELOP">=</XMTok>
+                  <XMApp>
+                    <XMTok meaning="annotated"/>
+                    <XMApp>
+                      <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                      <XMTok font="italic" role="UNKNOWN">J</XMTok>
+                      <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                    </XMApp>
+                    <XMDual>
+                      <XMRef idref="S4.E7.m1.1.1"/>
+                      <XMWrap>
+                        <XMTok role="OPEN" stretchy="false">(</XMTok>
+                        <XMApp xml:id="S4.E7.m1.1.1">
+                          <XMTok meaning="greater-than" role="RELOP">&gt;</XMTok>
+                          <XMTok meaning="absent"/>
+                          <XMApp>
+                            <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                            <XMTok font="italic" role="UNKNOWN">E</XMTok>
+                            <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                          </XMApp>
+                        </XMApp>
+                        <XMTok role="CLOSE" stretchy="false">)</XMTok>
+                      </XMWrap>
+                    </XMDual>
+                  </XMApp>
+                  <XMApp>
+                    <XMApp>
+                      <XMTok role="SUPERSCRIPTOP" scriptpos="post1"/>
+                      <XMApp>
+                        <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                        <XMTok mathstyle="display" meaning="integral" name="int" role="INTOP">∫</XMTok>
+                        <XMApp>
+                          <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                          <XMTok font="italic" fontsize="70%" role="UNKNOWN">E</XMTok>
+                          <XMTok font="italic" fontsize="70%" role="UNKNOWN">m</XMTok>
+                          <XMTok font="italic" fontsize="70%" role="UNKNOWN">i</XMTok>
+                          <XMTok font="italic" fontsize="70%" role="UNKNOWN">n</XMTok>
+                        </XMApp>
+                      </XMApp>
+                      <XMTok fontsize="70%" meaning="infinity" name="infty" role="ID">∞</XMTok>
+                    </XMApp>
+                    <XMApp>
+                      <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                      <XMApp>
+                        <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                        <XMTok font="italic" role="UNKNOWN">A</XMTok>
+                        <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                      </XMApp>
+                      <XMApp>
+                        <XMTok role="SUPERSCRIPTOP" scriptpos="post1"/>
+                        <XMApp>
+                          <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                          <XMTok font="italic" role="UNKNOWN">E</XMTok>
+                          <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                        </XMApp>
+                        <XMApp>
+                          <XMTok fontsize="70%" meaning="minus" role="ADDOP">-</XMTok>
+                          <XMTok font="italic" fontsize="70%" name="beta" role="UNKNOWN">β</XMTok>
+                        </XMApp>
+                      </XMApp>
+                      <XMApp>
+                        <XMTok font="italic" meaning="differential-d" role="DIFFOP">d</XMTok>
+                        <XMApp>
+                          <XMTok role="SUBSCRIPTOP" scriptpos="post1"/>
+                          <XMTok font="italic" role="UNKNOWN">E</XMTok>
+                          <XMTok font="italic" fontsize="70%" role="UNKNOWN">P</XMTok>
+                        </XMApp>
+                      </XMApp>
+                    </XMApp>
+                  </XMApp>
+                </XMApp>
+                <XMTok role="PERIOD">.</XMTok>
+              </XMWrap>
+            </XMDual>
+          </XMath>
+        </Math>
+      </equation>
+      <p>Fig. <ref labelref="LABEL:tupi_flux"/> shows the results of the integral proton flux obtained from the New-Tupi muon excess observed in coincidence with the radiation. The red circles represent the GOES-16 data, and the black squares represent the expected proton flux in the GeV energy range obtained from Monte Carlo, muon excess at the New-Tupi detector, and the GOES-proton fluence.
+The origin of this transient event was the solar eruption, an M6-class flare (prompt emission), accelerating protons (ions) up to relativistic energies, GeV energy range.</p>
+    </para>
+  </section>
+  <section inlist="toc" xml:id="S5">
+    <tags>
+      <tag>5</tag>
+      <tag role="autoref">section 5</tag>
+      <tag role="refnum">5</tag>
+      <tag role="typerefnum">§5</tag>
+    </tags>
+    <title><tag close=" ">5</tag>Conclusions</title>
+    <para xml:id="S5.p1">
+      <p>We have reported evidence of SEPs accelerated up to GeV energies during the eruptive phase of the M6-class solar flare on July 17, 2023. The result comes from a timing analysis of a muon excess from the New-Tupi detector at the SAA central region. Muons at New-Tupi are produced by protons (ions) interaction in the upper atmosphere reaching the Earth with a magnetic rigidity above 3 GV (<Math mode="inline" tex="\sim" text="similar-to" xml:id="S5.p1.m1">
+          <XMath>
+            <XMTok meaning="similar-to" name="sim" role="RELOP">∼</XMTok>
+          </XMath>
+        </Math> 3 GeV for protons).</p>
+    </para>
+    <para xml:id="S5.p2">
+      <p>In most cases, SEP (mostly protons) detected by the GOES-16 spacecraft shows two steps. An impulsive phase, where the acceleration of protons (ions) is by the prompt emission of flare, followed by a gradual phase of long duration, where the acceleration of protons (ions) is by the associated CME shock waves.</p>
+    </para>
+    <para xml:id="S5.p3">
+      <p>We want to point out that the muon excess produced by SEPs with an effective rigidity above the cutoff (<Math mode="inline" tex="\sim" text="similar-to" xml:id="S5.p3.m1">
+          <XMath>
+            <XMTok meaning="similar-to" name="sim" role="RELOP">∼</XMTok>
+          </XMath>
+        </Math> 3 GV) at the New-Tupi muon detector is in temporal coincidence only with the GOES proton flux from the impulsive phase (see Fig. <ref labelref="LABEL:goes_tupi"/>) . Consequently, in the gradual phase, the protons accelerated by CME’s shocks do not reach the GeV energy range because a muon excess is absent at ground level.</p>
+    </para>
+    <para xml:id="S5.p4">
+      <p>A marginal muon excess also appears on the Yan ba Jing S-21(pointing 21 degrees south) muon telescope (in Tibet). Also, a marginal particle excess is seen only in the French Kerguel NM (close to the South polar region).
+In both cases, the excesses are in (temporal) coincidence with the GOES proton flux (impulsive phase). However, it is hard to verify whether these excesses are genuine due to low confidence or simply fluctuations in the detectors’ count rate.</p>
+    </para>
+    <para xml:id="S5.p5">
+      <p>From a Monte Carlo analysis,
+we show that the SAA central region is favourable to the observation of transient solar events, especially SEP, because
+the magnetosphere has a ”dip´´ in this region,
+weakening the geomagnetic</p>
+    </para>
+    <para xml:id="S5.p6">
+      <p>field strength and allowing the entrance of charged particles at large deeps in a region not far from the geographic Equator, giving a rigidity sub-cutoff around 3.1 GV in a place where the conventional Stormer geomagnetic rigidity cutoff is around 10 GV.</p>
+    </para>
+  </section>
+  <section inlist="toc" xml:id="S6">
+    <tags>
+      <tag>6</tag>
+      <tag role="autoref">section 6</tag>
+      <tag role="refnum">6</tag>
+      <tag role="typerefnum">§6</tag>
+    </tags>
+    <title><tag close=" ">6</tag>Acknowledgments</title>
+    <para xml:id="S6.p1">
+      <p>This work is supported by the Rio de Janeiro Research Foundation (FAPERJ) under Grant E-26/010.101128/2018. We thank to NMDB Database (www.nmdb.eu), founded under the European Union FP7 Program (Contract No. 213007)
+by provide NMs data and the Space Weather Prediction Center
+from NOAA for its open data policy.</p>
+    </para>
+  </section>
+  <appendix inlist="toc" xml:id="A1">
+    <tags>
+      <tag>Appendix A</tag>
+      <tag role="autoref">Appendix A</tag>
+      <tag role="refnum">A</tag>
+      <tag role="typerefnum">Appendix A</tag>
+    </tags>
+    <title><tag close=" ">Appendix A</tag>New-Tupi detector</title>
+    <toctitle><tag close=" ">A</tag>New-Tupi detector</toctitle>
+    <para xml:id="A1.p1">
+      <p>The New-Tupi telescope is built with four identical particle detectors, forming two telescopes, as shown in Fig. 8 from <cite class="ltx_citemacro_cite"><bibref bibrefs="augu16a" separator=";" show="Authors Phrase1YearPhrase2" yyseparator=",">
+            <bibrefphrase>(</bibrefphrase>
+            <bibrefphrase>)</bibrefphrase>
+          </bibref></cite><!--  %**** s2˙storm.tex Line 550 **** -->. Each detector consisting of an Eljen EJ-208
+plastic scintillator slab of 150 cm x 75 cm x 5 cm and a Hamamatsu R877 photomultiplier of 127
+millimeters in diameter, packaged in a pyramidal box.
+The PMT high voltage divider, amplifier, and high voltage power supplier are in the ORTEC ScintiPackTM Photomultiplier Base 296.</p>
+    </para>
+    <para xml:id="A1.p2">
+      <p>From February 6, 2023, we have implemented a data acquisition system using a VERTILON high-speed pulse counting system (MCPC618-8 Channel). allowing for direct connection with the PMTs without the need for external preamplifiers,
+with a 250 MHz count rate per channel.</p>
+    </para>
+    <para xml:id="A1.p3">
+      <p>Now the detector is working only in scaler mode or
+single particle technique <cite class="ltx_citemacro_citep">(<bibref bibrefs="agli96" separator=";" show="AuthorsPhrase1Year" yyseparator=",">
+            <bibrefphrase>, </bibrefphrase>
+          </bibref>)</cite>, where the single hit rates of all four PMTs, are recorded once a second.
+However, so far, only two detectors are working. The coincidences among these detectors of each telescope will be implanted.</p>
+    </para>
+    <para xml:id="A1.p4">
+      <p>Also, the barometric coefficients for cosmic muon fluxes at the Earth’s surface can be obtained using the CORSICA code in <cite class="ltx_citemacro_cite"><bibref bibrefs="kovy13" separator=";" show="Authors Phrase1YearPhrase2" yyseparator=",">
+            <bibrefphrase>(</bibrefphrase>
+            <bibrefphrase>)</bibrefphrase>
+          </bibref></cite>. For New-Tupi detector conditions and at sea level, the barometric coefficient is about -0.14% per mb, about eight to nine times less than the typical barometric coefficient in NMs.</p>
+    </para>
+    <pagination role="newpage"/>
+  </appendix>
+  <bibliography citestyle="authoryear" files="s2_storm" xml:id="bib">
+    <title>References</title>
+  </bibliography>
+</document>

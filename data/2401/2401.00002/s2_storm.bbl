@@ -1,0 +1,96 @@
+\begin{thebibliography}{}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\href{#1}{#1}}
+\providecommand{\dodoi}[1]{doi:~\href{http://doi.org/#1}{\nolinkurl{#1}}}
+\providecommand{\doeprint}[1]{\href{http://ascl.net/#1}{\nolinkurl{http://ascl.net/#1}}}
+\providecommand{\doarXiv}[1]{\href{https://arxiv.org/abs/#1}{\nolinkurl{https://arxiv.org/abs/#1}}}
+
+\bibitem[{Aglietta {et~al.}(1996)Aglietta, Alessandro, Antonioli, Arneodo,
+  Bergamasco, Bertaina, Castellina, Castagnoli, Chiavassa, Castagnoli,
+  {et~al.}}]{agli96}
+Aglietta, M., Alessandro, B., Antonioli, P., {et~al.} 1996, Astrophysical
+  Journal, 469, 305
+
+\bibitem[{Augusto {et~al.}(2016{\natexlab{a}})Augusto, Navia, de~Oliveira,
+  Nepomuceno, \& Fauth}]{augu16a}
+Augusto, C., Navia, C., de~Oliveira, M., Nepomuceno, A., \& Fauth, A.
+  2016{\natexlab{a}}, arXiv preprint arXiv:1603.08863
+
+\bibitem[{Augusto {et~al.}(2016{\natexlab{b}})Augusto, Navia, de~Oliveira,
+  Fauth, \& Nepomuceno}]{augu16b}
+Augusto, C., Navia, C., de~Oliveira, M.~N., Fauth, A., \& Nepomuceno, A.
+  2016{\natexlab{b}}, Publications of the Astronomical Society of Japan, 68, 8
+
+\bibitem[{Battistoni {et~al.}(2008)Battistoni, Cerutti, Empl, Fass{\`o},
+  Ferrari, Gadioli, Garzelli, Muraro, Pelliccioni, Pinsky, {et~al.}}]{batt08}
+Battistoni, G., Cerutti, F., Empl, A., {et~al.} 2008, Nuclear Physics
+  B-Proceedings Supplements, 175, 88
+
+\bibitem[{Cade~III \& Chan-Park(2015)}]{cade15}
+Cade~III, W.~B., \& Chan-Park, C. 2015, Space Weather, 13, 99
+
+\bibitem[{Casolino {et~al.}(2009)Casolino, De~Simone, De~Pascale, Di~Felice,
+  Marcelli, Minori, Picozza, Sparvoli, Castellini, Adriani, {et~al.}}]{caso09}
+Casolino, M., De~Simone, N., De~Pascale, M.~e., {et~al.} 2009, Nuclear Physics
+  B-Proceedings Supplements, 190, 293
+
+\bibitem[{Chupp {et~al.}(1987)Chupp, Debrunner, Fl{\"u}ckiger, Forrest,
+  Golliez, Kanbach, Vestrand, Cooper, \& Share}]{chup87}
+Chupp, E., Debrunner, H., Fl{\"u}ckiger, E., {et~al.} 1987, The Astrophysical
+  Journal, 318, 913
+
+\bibitem[{Finlay {et~al.}(2020)Finlay, Kloss, Olsen, Hammer,
+  T{\o}ffner-Clausen, Grayver, \& Kuvshinov}]{finl20}
+Finlay, C.~C., Kloss, C., Olsen, N., {et~al.} 2020, Earth, Planets and Space,
+  72, 1
+
+\bibitem[{Heck {et~al.}(2012)Heck, Pierog, \& Knapp}]{heck12}
+Heck, D., Pierog, T., \& Knapp, J. 2012, Astrophysics Source Code Library, ascl
+
+\bibitem[{Hu \& Semones(2022)}]{hu22}
+Hu, S., \& Semones, E. 2022, Journal of Space Weather and Space Climate, 12, 5
+
+\bibitem[{Kovylyaeva {et~al.}(2013)Kovylyaeva, Dmitrieva, Tolkacheva, \&
+  Yakovleva}]{kovy13}
+Kovylyaeva, A., Dmitrieva, A., Tolkacheva, N., \& Yakovleva, E. 2013, Journal
+  of Physics: Conference Series, 409, 012128
+
+\bibitem[{Meyer {et~al.}(1956)Meyer, Parker, \& Simpson}]{meye56}
+Meyer, P., Parker, E., \& Simpson, J. 1956, Physical Review, 104, 768
+
+\bibitem[{Miroshnichenko {et~al.}(2005)Miroshnichenko, Klein, Trottet, Lantos,
+  Vashenyuk, Balabin, \& Gvozdevsky}]{miro05}
+Miroshnichenko, L., Klein, K.-L., Trottet, G., {et~al.} 2005, Journal of
+  Geophysical Research: Space Physics, 110
+
+\bibitem[{Moraal {et~al.}(2000)Moraal, Belov, \& Clem}]{mora00}
+Moraal, H., Belov, A., \& Clem, J. 2000, Space Science Reviews, 93, 285
+
+\bibitem[{Pav{\'o}n-Carrasco \& De~Santis(2016)}]{pavo16}
+Pav{\'o}n-Carrasco, F.~J., \& De~Santis, A. 2016, Frontiers in Earth Science,
+  4, 40
+
+\bibitem[{Shea \& Smart(1982)}]{shea82}
+Shea, M., \& Smart, D. 1982, Space Science Reviews, 32, 251
+
+\bibitem[{Shea \& Smart(2012)}]{shea12}
+---. 2012, Space science reviews, 171, 161
+
+\bibitem[{Simpson(2000)}]{simp00}
+Simpson, J.~A. 2000, in Cosmic Rays and Earth: Proceedings of an ISSI Workshop,
+  21--26 March 1999, Bern, Switzerland, Springer, 11--32
+
+\bibitem[{Smart \& Shea(2009)}]{smar09}
+Smart, D., \& Shea, M. 2009, Advances in Space Research, 44, 1107
+
+\bibitem[{Vald{\'e}s-Galicia {et~al.}(2009)Vald{\'e}s-Galicia, Muraki,
+  Watanabe, Matsubara, Sako, Gonzalez, Musalem, \& Hurtado}]{vald09}
+Vald{\'e}s-Galicia, J., Muraki, Y., Watanabe, K., {et~al.} 2009, Advances in
+  Space Research, 43, 565
+
+\bibitem[{Zhang {et~al.}(2010)Zhang, Tan, Wang, Lu, Meng, \& Muraki}]{zhan10}
+Zhang, J., Tan, Y., Wang, H., {et~al.} 2010, Nuclear Instruments and Methods in
+  Physics Research Section A: Accelerators, Spectrometers, Detectors and
+  Associated Equipment, 623, 1030
+
+\end{thebibliography}

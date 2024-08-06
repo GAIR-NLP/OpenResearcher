@@ -1,0 +1,741 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Sector Rotation by Factor Model and Fundamental Analysis</title>
+<!--Generated on Tue Apr 23 13:49:15 2024 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on Sept 2023.-->
+
+<link rel="stylesheet" href="LaTeXML.css" type="text/css">
+<link rel="stylesheet" href="ltx-article.css" type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document ltx_authors_1line">
+<h1 class="ltx_title ltx_title_document">Sector Rotation by Factor Model and Fundamental Analysis</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Runjia Yang
+</span><span class="ltx_author_notes">
+<span class="ltx_contact ltx_role_affiliation">University of California, Davis
+</span></span></span>
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Beining Shi
+</span><span class="ltx_author_notes">
+<span class="ltx_contact ltx_role_affiliation">University of California, Davis
+</span></span></span>
+</div>
+<div class="ltx_dates">(Sept 2023)</div>
+
+<section id="Sx1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">Abstract</h2>
+
+<div id="Sx1.p1" class="ltx_para">
+<p class="ltx_p">This study presents an analytical approach to sector rotation, leveraging both factor models and fundamental metrics. We initiate with a systematic classification of sectors, followed by an empirical investigation into their returns. Through factor analysis, the paper underscores the significance of momentum and short-term reversion in dictating sectoral shifts. A subsequent in-depth fundamental analysis evaluates metrics such as PE, PB, EV-to-EBITDA, Dividend Yield, among others. Our primary contribution lies in developing a predictive framework based on these fundamental indicators. The constructed models, post rigorous training, exhibit noteworthy predictive capabilities. The findings furnish a nuanced understanding of sector rotation strategies, with implications for asset management and portfolio construction in the financial domain.</p>
+</div>
+<div id="Sx1.p2" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Keywords:</span> US Industrial Sectors, Factor Analysis, Fundamental Analysis, Trading Strategy.</p>
+</div>
+</section>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>Introduction</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">Sector is composed by a basket of stocks that representing companies in certain business class, which has unique features according to the business. Under certain conditions, such as economic cycles, sectors may behave accordingly due to the different characteristics of businesses. In this report, we are exploring how to capture returns by finding the hidden features behind different sectors and determining the leading sectors in some particular market conditions or social environments. Generally, this report covers a brief exploration of market and fundamental factors, explaining the meaning of each factors and how they are related to some sectors.Then we applied a neural network model to do a classification and prediction using the fundamental factors as inputs. At the end of the report, we also covers how sectors behaved under global events.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>Sector Classification and Return Analysis</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">There are many different ways to divide sectors. For the purpose of common acceptance and convenience for future data acquirement, we used the MSCI Global Industry Classification Standard, which includes 11 level one sectors, 24 level two industry groups, 69 level three industries, and 158 sub-industries. We use the 11 level one sectors as our main target. They are Energy, Materials, Industrials, Consumer Discretionary, Consumer Staples, Health Care, Financials, Information Technology, Communication Services, Utilities, and Real Estate. In order to track the performance of each sector, we use the S<math id="S2.p1.m1" class="ltx_Math" alttext="\&amp;" display="inline"><mo>&amp;</mo></math>P500 GICS Indices which are constructed exactly as the MSCI classification.Before working on any strategies further, we need to determine if there are actually possible profits. In our case, we need to check how big the differences between sectors’ returns are. For each observation time period,
+<span class="ltx_text ltx_font_bold">Define:</span> Return Difference =(<math id="S2.p1.m2" class="ltx_Math" alttext="\sum_{\text{top 3}}" display="inline"><msub><mo>∑</mo><mtext>top 3</mtext></msub></math> Sector Return - <math id="S2.p1.m3" class="ltx_Math" alttext="\sum_{\text{bottom 3}}" display="inline"><msub><mo>∑</mo><mtext>bottom 3</mtext></msub></math> Sector Return )/3
+Based on a monthly frequency, we calculate the return difference and get the following plot.</p>
+<img src="return_difference.png" id="S2.p1.g1" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]">
+<p class="ltx_p">Also, by calculation, the quarterly return difference has a mean of 0.1306, median of 0.1185, standard deviation of 0.0523. We can reach to a result that half of the quarterly return difference is more than 11.85<math id="S2.p1.m4" class="ltx_Math" alttext="\%" display="inline"><mo>%</mo></math>. It is easy to see that there does exist potential investment opportunity by capturing the return differences between sectors.</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>Factor Analysis</h2>
+
+<section id="S3.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.1 </span>Momentum Factor Exploration</h3>
+
+<div id="S3.SS1.p1" class="ltx_para">
+<p class="ltx_p">Momentum premium was first recognized by UCLA scholars Narasimhan Jegadeesh and Sheridan Titman in 1993. The momentum premium is established on the observation that assets that have performed well in the past have the trend to persist good performance in the future. Though the momentum effect is considered to be a market anomaly, it has been recognized widely among many asset classes. We will explore the momentum effect based on the sector indices introduced above.</p>
+</div>
+<section id="S3.SS1.SSS1" class="ltx_subsubsection">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">3.1.1 </span>Factor Construction</h4>
+
+<div id="S3.SS1.SSS1.p1" class="ltx_para">
+<p class="ltx_p">First of all, we need to construct the momentum factor. Typically, the momentum factor is constructed by the past 6 or 12 months cumulative return and excludes the most recent month’s return, considering that there are also short-term reversion effects based on the mean-reversion effects. However, without a clear idea of how the sector indices carry the momentum effect, we need to explore through time intervals to find the best possible momentum factor. Then we constructed 12 different momentum factors using the past 1 to 12 month’s return and excluding the most recent 0.1 portion trading days of each time period to avoid short-term reversion. For each of the factors with the period of n months</p>
+<table id="S3.Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex1.m1" class="ltx_Math" alttext="MOM\_{nM}=\sum_{\text{Past}n*21\text{ days}}R_{d}-\sum_{\text{Past }0.1*n*21%
+\text{ days}}R_{d}" display="block"><mrow><mrow><mi>M</mi><mo>⁢</mo><mi>O</mi><mo>⁢</mo><mi>M</mi><mo>⁢</mo><mi mathvariant="normal">_</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi>M</mi></mrow><mo rspace="0.111em">=</mo><mrow><mrow><munder><mo movablelimits="false">∑</mo><mrow><mrow><mrow><mtext>Past</mtext><mo>⁢</mo><mi>n</mi></mrow><mo lspace="0.222em" rspace="0.222em">∗</mo><mn>21</mn></mrow><mo>⁢</mo><mtext> days</mtext></mrow></munder><msub><mi>R</mi><mi>d</mi></msub></mrow><mo rspace="0.055em">−</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mrow><mrow><mtext>Past </mtext><mo>⁢</mo><mn>0.1</mn></mrow><mo lspace="0.222em" rspace="0.222em">∗</mo><mi>n</mi><mo lspace="0.222em" rspace="0.222em">∗</mo><mn>21</mn></mrow><mo>⁢</mo><mtext> days</mtext></mrow></munder><msub><mi>R</mi><mi>d</mi></msub></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">where <math id="S3.SS1.SSS1.p1.m1" class="ltx_Math" alttext="R_{d}" display="inline"><msub><mi>R</mi><mi>d</mi></msub></math> is the daily return.</p>
+</div>
+</section>
+<section id="S3.SS1.SSS2" class="ltx_subsubsection">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">3.1.2 </span>Calculate Factor Returns</h4>
+
+<div id="S3.SS1.SSS2.p1" class="ltx_para">
+<p class="ltx_p">For the 12 factors we got, we normalized them cross sections. Then we rank the factor exposures for each sector and take long positions of sectors with the highest two factor exposures, take short position of sectors with the lowest two factor exposures. Then we trade our portfolio under a monthly frequency. Here are the results from 2002 to 2022 February:</p>
+<table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_l ltx_border_r ltx_border_t">Factor</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_r ltx_border_t">Factor Return</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_r ltx_border_t">Sharpe Ratio</th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_1M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m1" class="ltx_Math" alttext="-0.0297" display="inline"><mrow><mo>−</mo><mn>0.0297</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m2" class="ltx_Math" alttext="-0.09" display="inline"><mrow><mo>−</mo><mn>0.09</mn></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_2M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m3" class="ltx_Math" alttext="-0.0583" display="inline"><mrow><mo>−</mo><mn>0.0583</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m4" class="ltx_Math" alttext="-0.19" display="inline"><mrow><mo>−</mo><mn>0.19</mn></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_3M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m5" class="ltx_Math" alttext="0.0082" display="inline"><mn>0.0082</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m6" class="ltx_Math" alttext="0.02" display="inline"><mn>0.02</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_4M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m7" class="ltx_Math" alttext="-0.0245" display="inline"><mrow><mo>−</mo><mn>0.0245</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m8" class="ltx_Math" alttext="-0.08" display="inline"><mrow><mo>−</mo><mn>0.08</mn></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_5M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m9" class="ltx_Math" alttext="-0.0136" display="inline"><mrow><mo>−</mo><mn>0.0136</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m10" class="ltx_Math" alttext="-0.04" display="inline"><mrow><mo>−</mo><mn>0.04</mn></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_6M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m11" class="ltx_Math" alttext="0.0195" display="inline"><mn>0.0195</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m12" class="ltx_Math" alttext="0.06" display="inline"><mn>0.06</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_7M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m13" class="ltx_Math" alttext="0.0535" display="inline"><mn>0.0535</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m14" class="ltx_Math" alttext="0.15" display="inline"><mn>0.15</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_8M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m15" class="ltx_Math" alttext="0.0721" display="inline"><mn>0.0721</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m16" class="ltx_Math" alttext="0.21" display="inline"><mn>0.21</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_9M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m17" class="ltx_Math" alttext="0.0413" display="inline"><mn>0.0413</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m18" class="ltx_Math" alttext="0.11" display="inline"><mn>0.11</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_10M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m19" class="ltx_Math" alttext="-0.0470" display="inline"><mrow><mo>−</mo><mn>0.0470</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m20" class="ltx_Math" alttext="-0.13" display="inline"><mrow><mo>−</mo><mn>0.13</mn></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_11M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m21" class="ltx_Math" alttext="0.0371" display="inline"><mn>0.0371</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m22" class="ltx_Math" alttext="0.10" display="inline"><mn>0.10</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_b ltx_border_l ltx_border_r ltx_border_t">MOM_12M</th>
+<td class="ltx_td ltx_align_left ltx_border_b ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m23" class="ltx_Math" alttext="0.0327" display="inline"><mn>0.0327</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_b ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m24" class="ltx_Math" alttext="0.01" display="inline"><mn>0.01</mn></math></td>
+</tr>
+</tbody>
+</table>
+<p class="ltx_p">Since there are several market crashes where the momentum factor led to negative returns, we also take a look at the most recent five years from 2017 to 2022 February:</p>
+<table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_l ltx_border_r ltx_border_t">Factor</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_r ltx_border_t">Factor Return</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_r ltx_border_t">Sharpe Ratio</th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_1M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m25" class="ltx_Math" alttext="0.0213" display="inline"><mn>0.0213</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m26" class="ltx_Math" alttext="0.06" display="inline"><mn>0.06</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_2M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m27" class="ltx_Math" alttext="-0.0494" display="inline"><mrow><mo>−</mo><mn>0.0494</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m28" class="ltx_Math" alttext="-0.14" display="inline"><mrow><mo>−</mo><mn>0.14</mn></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_3M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m29" class="ltx_Math" alttext="0.1154" display="inline"><mn>0.1154</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m30" class="ltx_Math" alttext="0.29" display="inline"><mn>0.29</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_4M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m31" class="ltx_Math" alttext="-0.1578" display="inline"><mrow><mo>−</mo><mn>0.1578</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m32" class="ltx_Math" alttext="0.41" display="inline"><mn>0.41</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_5M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m33" class="ltx_Math" alttext="-0.1788" display="inline"><mrow><mo>−</mo><mn>0.1788</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m34" class="ltx_Math" alttext="0.47" display="inline"><mn>0.47</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_6M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m35" class="ltx_Math" alttext="0.1163" display="inline"><mn>0.1163</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m36" class="ltx_Math" alttext="0.35" display="inline"><mn>0.35</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_7M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m37" class="ltx_Math" alttext="0.2119" display="inline"><mn>0.2119</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m38" class="ltx_Math" alttext="0.62" display="inline"><mn>0.62</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_8M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m39" class="ltx_Math" alttext="0.1869" display="inline"><mn>0.1869</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m40" class="ltx_Math" alttext="0.56" display="inline"><mn>0.56</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_9M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m41" class="ltx_Math" alttext="0.1583" display="inline"><mn>0.1583</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m42" class="ltx_Math" alttext="0.43" display="inline"><mn>0.43</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_10M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m43" class="ltx_Math" alttext="0.0504" display="inline"><mn>0.0504</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m44" class="ltx_Math" alttext="0.12" display="inline"><mn>0.12</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">MOM_11M</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m45" class="ltx_Math" alttext="0.1547" display="inline"><mn>0.1547</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m46" class="ltx_Math" alttext="0.40" display="inline"><mn>0.40</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_b ltx_border_l ltx_border_r ltx_border_t">MOM_12M</th>
+<td class="ltx_td ltx_align_left ltx_border_b ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m47" class="ltx_Math" alttext="0.1289" display="inline"><mn>0.1289</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_b ltx_border_r ltx_border_t"><math id="S3.SS1.SSS2.p1.m48" class="ltx_Math" alttext="0.33" display="inline"><mn>0.33</mn></math></td>
+</tr>
+</tbody>
+</table>
+<p class="ltx_p">From this table, we can tell that by using the MOM<math id="S3.SS1.SSS2.p1.m49" class="ltx_Math" alttext="\_" display="inline"><mi mathvariant="normal">_</mi></math>7M factor, we can reach a maximum annual return rate of 21.19<math id="S3.SS1.SSS2.p1.m50" class="ltx_Math" alttext="\%" display="inline"><mo>%</mo></math> and a maximum Sharpe ratio of 0.62. It is also interesting that we find the momentum factor with a short time period, for example, MOM<math id="S3.SS1.SSS2.p1.m51" class="ltx_Math" alttext="\_" display="inline"><mi mathvariant="normal">_</mi></math>1M and MOM<math id="S3.SS1.SSS2.p1.m52" class="ltx_Math" alttext="\_" display="inline"><mi mathvariant="normal">_</mi></math>2M, have a very small even negative return rate. However, it exactly conforms to the short term reversion effect that the typical momentum factor would exclude.</p>
+</div>
+</section>
+</section>
+<section id="S3.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">3.2 </span>Short Term Reversion Factor Exploration</h3>
+
+<div id="S3.SS2.p1" class="ltx_para">
+<p class="ltx_p">Short term reversion factor follows the simple principle that asset’s price will have the trend to stay on an average level. Since we can see from the previous results of the momentum factor that there does exist short term reversion effect, we can try different reversion factors and find out what would be the best short term reversion observation period.</p>
+</div>
+<section id="S3.SS2.SSS1" class="ltx_subsubsection">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">3.2.1 </span>Factor Construction</h4>
+
+<div id="S3.SS2.SSS1.p1" class="ltx_para">
+<p class="ltx_p">Similarly, we can define several reversion factors with different time periods. And we take the negative number of the past n days cumulative return as the factor exposures.</p>
+<table id="S3.Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S3.Ex2.m1" class="ltx_Math" alttext="REV\_{nD}=-\sum_{\text{Past }n\text{ days}}R_{d}" display="block"><mrow><mrow><mi>R</mi><mo>⁢</mo><mi>E</mi><mo>⁢</mo><mi>V</mi><mo>⁢</mo><mi mathvariant="normal">_</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi>D</mi></mrow><mo>=</mo><mrow><mo>−</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mtext>Past </mtext><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mtext> days</mtext></mrow></munder><msub><mi>R</mi><mi>d</mi></msub></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">For the purpose of exploring the optimal time period, we take 5-day time interval and create 12 reversion factors from 5 trade days to 55 trade days.</p>
+</div>
+</section>
+<section id="S3.SS2.SSS2" class="ltx_subsubsection">
+<h4 class="ltx_title ltx_title_subsubsection">
+<span class="ltx_tag ltx_tag_subsubsection">3.2.2 </span>Calculate Factor Returns</h4>
+
+<div id="S3.SS2.SSS2.p1" class="ltx_para">
+<p class="ltx_p">By using the same method, we compute the rank of each sector’s factor exposure, and long the top two sectors, short the last two sectors on a monthly observation frequency. Between 2002 and 2022 February, the results are:</p>
+<table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row ltx_border_l ltx_border_r ltx_border_t">Factor</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_r ltx_border_t">Factor Return</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_border_r ltx_border_t">Sharpe Ratio</th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">Rev_5D</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m1" class="ltx_Math" alttext="-0.0059" display="inline"><mrow><mo>−</mo><mn>0.0059</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m2" class="ltx_Math" alttext="-0.0597" display="inline"><mrow><mo>−</mo><mn>0.0597</mn></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">Rev_10D</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m3" class="ltx_Math" alttext="0.0294" display="inline"><mn>0.0294</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m4" class="ltx_Math" alttext="0.3320" display="inline"><mn>0.3320</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">Rev_15D</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m5" class="ltx_Math" alttext="0.0127" display="inline"><mn>0.0127</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m6" class="ltx_Math" alttext="0.1338" display="inline"><mn>0.1338</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">Rev_20D</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m7" class="ltx_Math" alttext="0.0072" display="inline"><mn>0.0072</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m8" class="ltx_Math" alttext="0.0715" display="inline"><mn>0.0715</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">Rev_25D</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m9" class="ltx_Math" alttext="0.0690" display="inline"><mn>0.0690</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m10" class="ltx_Math" alttext="0.7768" display="inline"><mn>0.7768</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">Rev_30D</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m11" class="ltx_Math" alttext="0.0877" display="inline"><mn>0.0877</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m12" class="ltx_Math" alttext="0.8735" display="inline"><mn>0.8735</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">Rev_35D</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m13" class="ltx_Math" alttext="0.0135" display="inline"><mn>0.0135</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m14" class="ltx_Math" alttext="0.1288" display="inline"><mn>0.1288</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">Rev_40D</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m15" class="ltx_Math" alttext="-0.0314" display="inline"><mrow><mo>−</mo><mn>0.0314</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m16" class="ltx_Math" alttext="-0.3422" display="inline"><mrow><mo>−</mo><mn>0.3422</mn></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">Rev_45D</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m17" class="ltx_Math" alttext="-0.0694" display="inline"><mrow><mo>−</mo><mn>0.0694</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m18" class="ltx_Math" alttext="-0.8417" display="inline"><mrow><mo>−</mo><mn>0.8417</mn></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">Rev_50D</th>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m19" class="ltx_Math" alttext="-0.0183" display="inline"><mrow><mo>−</mo><mn>0.0183</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m20" class="ltx_Math" alttext="-0.5919" display="inline"><mrow><mo>−</mo><mn>0.5919</mn></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_b ltx_border_l ltx_border_r ltx_border_t">Rev_55D</th>
+<td class="ltx_td ltx_align_left ltx_border_b ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m21" class="ltx_Math" alttext="-0.0517" display="inline"><mrow><mo>−</mo><mn>0.0517</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_border_b ltx_border_r ltx_border_t"><math id="S3.SS2.SSS2.p1.m22" class="ltx_Math" alttext="-0.1863" display="inline"><mrow><mo>−</mo><mn>0.1863</mn></mrow></math></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="S3.SS2.SSS2.p2" class="ltx_para">
+<p class="ltx_p">From this table, we can tell that for the time between 2002 to recent time, the short term reversion effect is optimal for taking the past 30 days cumulative return. It has an optimal annual return rate of 8.77<math id="S3.SS2.SSS2.p2.m1" class="ltx_Math" alttext="\%" display="inline"><mo>%</mo></math> on average and leads to a sharp ratio of 0.8735.</p>
+</div>
+</section>
+</section>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4 </span>Fundamental Analysis</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">Fundamental Analysis are always a good aspect to look at for investing. We collected quarterly data for all 11 indices from Bloomberg, including their P/E ratio, EV/EBIT, Profit Margin, etc. Our fundamental analysis would start from discovering features for each of the fundamental ratio,then we are trying to predict the sector performance by constructing using some of the features we found.</p>
+</div>
+<section id="S4.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.1 </span>PE Ratio</h3>
+
+<div id="S4.SS1.p1" class="ltx_para">
+<p class="ltx_p">The P/E is one of the most widely used tools to determine a stock’s relative valuation. The purpose of analyzing the ratio is to show whether certain sector is worth to be invested because P/E ratio can reflect the investment risk in this sector. The figure below shows distribution of P/E ratios in different sectors.</p>
+<img src="PE_Ratio.png" id="S4.SS1.p1.g1" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]">
+<p class="ltx_p">By comparing cross-sectional data, it is obvious that P/E of Real Estate Sector and Consumer Discretionary Sector are higher than others. The reason is that earning growth in the future is expected to grow fast in the two sectors or these sectors have some special advantages that guarantee long-term profitability with low risk. On the other hand, Financials Sector’s ratio is relatively low compared with other sectors, which may result from its high volatility so investors are reluctant to pay for it.
+<br class="ltx_break">We also notice that the ratio in Energy Sector surged in 2015, which is related to some changes in the sector. The end of the oil age and emergence of alternative energy have reduced the earnings of the original sector. As a result, its relative price becomes higher than before. The change in EV/EBIT and EV/EBITDA is also due to this reason.</p>
+</div>
+</section>
+<section id="S4.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.2 </span>PB Ratio</h3>
+
+<div id="S4.SS2.p1" class="ltx_para">
+<p class="ltx_p">The P/B ratio provides a valuable reality check for investors who are seeking growth at a reasonable price. For those sectors with more assets, their book value and market value are close, so P/B ratio is more useful when we analyze Real Estate sector and Financials sector. The figure below shows distribution of P/B ratio in different sectors.</p>
+<img src="PB_Ratio.png" id="S4.SS2.p1.g1" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]">
+<p class="ltx_p">As the picture shows, Consumer Discretionary sector and IT sector have higher P/B ratio while Financials sector and Energy sector have relatively low ratios. What’s more, Real Estate sector with high P/E ratio has relatively lower P/B ratio.</p>
+</div>
+</section>
+<section id="S4.SS3" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.3 </span>EV/Sales</h3>
+
+<div id="S4.SS3.p1" class="ltx_para">
+<p class="ltx_p">EV/Sales can help investors better understand cost relative to unit sales and whether the company is overvalued or undervalued. If EV/Sales is relatively high, the company or sector is less attractive to investors. The figure below shows distribution of EV/Sales in different sectors.</p>
+<img src="EV2Sales.png" id="S4.SS3.p1.g1" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]">
+<p class="ltx_p">The result shows that Real Estate sector’s ratio is higher than others’, which means that index in this sector is overvalued. On the other hand, ratio in Energy sector is low, which can attract more investors.</p>
+</div>
+</section>
+<section id="S4.SS4" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.4 </span>EV/EBIT <math id="S4.SS4.m1" class="ltx_Math" alttext="\&amp;" display="inline"><mo>&amp;</mo></math> EV/EBITDA</h3>
+
+<div id="S4.SS4.p1" class="ltx_para">
+<p class="ltx_p">EV/EBIT and EV/EBITDA are independent of the capital structure of the company, whereas multiples like P/E ratio are impacted by financing decisions. Because of this reason, the two are the most commonly relied-upon multiples in relative valuation. However, one obvious distinction is that EV/EBIT considers depreciation and amortization. In some capital-intensive industries which have significant differences in D<math id="S4.SS4.p1.m1" class="ltx_Math" alttext="\&amp;" display="inline"><mo>&amp;</mo></math>A, EV/EBIT may make it a more accurate measure of value. But in our analysis, there is no such difference in the comparison of these two ratios under different sectors.</p>
+<img src="EV2EBIT.png" id="S4.SS4.p1.g1" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]"><img src="EV2EBITDA.png" id="S4.SS4.p1.g2" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]">
+<p class="ltx_p">The results can show that Real Estate sector has a higher ratio. The three ratio EV/Sales, EV/EBIT and EV/EBITDA can give a consensus conclusion that Real Estate sector is overvalued in the market.</p>
+</div>
+</section>
+<section id="S4.SS5" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.5 </span>Dividend Yield</h3>
+
+<div id="S4.SS5.p1" class="ltx_para">
+<p class="ltx_p">Dividend Yield is used to measure the amount of cash flow investors are getting back for each dollar. It is essentially the return on investment for a stock without any capital gains. The figure below shows distribution of Dividend yield in different sectors.</p>
+<img src="Div_Yield.png" id="S4.SS5.p1.g1" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]">
+<p class="ltx_p">The ratio in Communication Services sector is higher before 2018 while Energy sector’s ratio is higher after that time. This is because communication services sector took place a reorganization of S<math id="S4.SS5.p1.m1" class="ltx_Math" alttext="\&amp;" display="inline"><mo>&amp;</mo></math>P500 index in 2018. It now includes at least eighteen companies from IT and Consumer Discretionary sectors. Due to this reshuffling, dividend yield of this sector is impacted.</p>
+</div>
+</section>
+<section id="S4.SS6" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.6 </span>Gross Margin</h3>
+
+<div id="S4.SS6.p1" class="ltx_para">
+<p class="ltx_p">Gross margin equals net sales less the cost of goods sold (COGS). Net sales are equivalent to the total revenue from sales, and COGS is the direct cost associated with producing goods. By calculating gross margin, we could measure one company’s retain revenue after subtracting the production cost. The higher the gross margin, the more capital a company retains, which it can then use to pay other costs or satisfy debt obligations. Generally, companies with good gross margins would have a relatively sustainable competitive advantage. By analyzing gross margin data across sectors, we may observe some sectors that have more stable development in the long run.</p>
+<img src="gross_margin.png" id="S4.SS6.p1.g1" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]">
+<p class="ltx_p">For our 11 sectors’ gross margin data, the line chart above shows significant differences between the sectors. Overall, each industry index is relatively flat on its own, and have gaps between each others. Utilities, Communication Services and Information Technology(IT) have been among the top spears for last 10 years, occupying the first, second and third positions respectively, all above 40<math id="S4.SS6.p1.m1" class="ltx_Math" alttext="\%" display="inline"><mo>%</mo></math>. On the contrary, the energy sector has been an under-performer for the past decade, ranking at the bottom, with gross margins consistently below 20<math id="S4.SS6.p1.m2" class="ltx_Math" alttext="\%" display="inline"><mo>%</mo></math>. Gross margins in the rest industries are concentrated in the 25<math id="S4.SS6.p1.m3" class="ltx_Math" alttext="\%" display="inline"><mo>%</mo></math>-35<math id="S4.SS6.p1.m4" class="ltx_Math" alttext="\%" display="inline"><mo>%</mo></math> range and have not fluctuate much.
+<br class="ltx_break">At the same time, by observing the comparison of fluctuations between industries, it is not difficult to see that the gross margin fluctuations of the energy industry and the utilities industry maybe relatively high in the past decade, and their peaks correspond to each other. During 2016, the utilities industry grew significantly, while energy declined comparatively. The trend was even more pronounced in 2020, with utilities reaching its highest level and the energy industry fell to the bottom.
+<br class="ltx_break">Generally, the gross margin feature maybe a significant indicator for Utilities, Communication Services and IT sectors. And our conjecture about the correlation between utilities and energy sectors will need further observation and verification.</p>
+</div>
+</section>
+<section id="S4.SS7" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.7 </span>Operating Margin <math id="S4.SS7.m1" class="ltx_Math" alttext="\&amp;" display="inline"><mo>&amp;</mo></math> Profit Margin:</h3>
+
+<div id="S4.SS7.p1" class="ltx_para">
+<p class="ltx_p">Operating margin equals operating income divided by revenue, it is a profitability ratio measuring revenue after covering operating and non-operating expenses of a business. And profit margin measures the profit ratio after paying for variable costs of production. It is calculated by the formula:</p>
+<table id="S4.Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S4.Ex3.m1" class="ltx_math_unparsed" alttext="\text{Profit Margin}=\frac{(\text{Total Revenue - Total Expenses )}}{\text{%
+Total Revenue}}" display="block"><mrow><mtext>Profit Margin</mtext><mo>=</mo><mfrac><mrow><mo stretchy="false">(</mo><mtext>Total Revenue - Total Expenses )</mtext></mrow><mtext>Total Revenue</mtext></mfrac></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Both operating margin and profit margin are used to gauge the degree of the company’s activity makes money. Higher ratios are generally better, illustrating the company is efficient in its operations and is good at turning sales into profits. In our analysis, there is not a very big difference in the comparison of these two ratios under different sectors, which is determined by their definition.</p>
+<img src="operating_margin.png" id="S4.SS7.p1.g1" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]"><img src="profit_margin.png" id="S4.SS7.p1.g2" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]">
+<p class="ltx_p">For these two ratios, Real Estate sector, IT sector and Financial sector have the top three high ratios.And Energy sector has the relatively lowest ratio. Also, both operating margin and profit margin for almost all sectors have similar trends in the last decade curves. This is attributed to the definition difference between the two features, and that’s why the operating margin was slightly higher than the profit margin.
+<br class="ltx_break">Another thing that is worth to mentioning is that for Energy Sector, not just operating margin and profit margin, but also the gross margin, it always has the relatively lowest ratios and similar curve fluctuation, with sharp declines in 2016 and 2020. The two time nodes may consistent with some big revolution in the energy industry, which we will analyze later.</p>
+</div>
+</section>
+<section id="S4.SS8" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">4.8 </span>Return on Asset <math id="S4.SS8.m1" class="ltx_Math" alttext="\&amp;" display="inline"><mo>&amp;</mo></math> Return on Equity</h3>
+
+<div id="S4.SS8.p1" class="ltx_para">
+<p class="ltx_p">Return on equity (ROE) and return on assets (ROA) are two of the most important measures for evaluating how effectively a company’s management team is doing its job of managing the capital entrusted to it. ROE equals to generally net income divided by equity, while Return on Assets (ROA) is net income divided by average assets. So the primary differentiator between ROE and ROA is financial leverage or debt. ROE measures profitability and ROA is an efficiency measure of how well a company is using its assets.
+Investors may prefer to observe ROE, since equity represents the owner’s interest in the business. Compared to other sources of fund, equity capital tends to be the most expensive source of funding and carries the largest risk premium of all financing options. Therefore, in our analysis, ROE may be a better feature that it could reflect the trend of market investment.</p>
+<img src="roa.png" id="S4.SS8.p1.g1" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]">
+<p class="ltx_p">As shown in the picture, IT sector has the highest ROA, the Consumer Staples sector and Consumer Discretionary sector also have a relatively higher ratio. In contrast, Financial sector has a lower ROA.
+The past ten years, or even twenty years, has been an era of rapid development of information technology. And compared with traditional industry and commerce, information technology is more flexible in the time and form of investment assets, that’s the reason why IT will have the highest ratio. Also for the the Consumer Staples sector and Consumer Discretionary sector,they are all industries with fast innovation and short production cycle. Generally, these three will have constantly higher ratio for the long run. Therefore, for these three industries, if the ROA indicator fluctuates significantly, it may have an impact on the investment trend.</p>
+<img src="roe.png" id="S4.SS8.p1.g2" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]">
+<p class="ltx_p">For ROE ratio, similarly, IT, Consumer Staples stay high, and Consumer Discretionary sectors is also at a slightly higher level, except that the IT sector lost its prominence in ROA ratio.
+By comparing cross-sectional data, the Consumer Discretionary Sector and Industrials Sector have similar patterns in the last decade for both ROA and ROE ratios. They both have a low peak in 2020. It is conceivable that this is affected by the general environment of the epidemic.
+And as we mentioned before, the ROE and ROA curves of the energy sector still have a similar pattern, falling sharply in 2016 and 2020. In 2016, it was affected by changes in energy policy since 2015, reducing oil production while encouraging the development of clean and new energy. For 2020, we attribute this decline to the outbreak of the COVID-19 pandemic.</p>
+</div>
+</section>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5 </span>Prediction by Fundamental Factors</h2>
+
+<section id="S5.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">5.1 </span>Factor and Future Return</h3>
+
+<div id="S5.SS1.p1" class="ltx_para">
+<p class="ltx_p">Having these fundamental data, next step is to find out what quantitative relationships they have to futures sector returns. For fundamental factors, they are usually exposed in the company report with annual, semi-annual, or quarterly frequency. Our fundamental factors for each sector are reported quarterly, leading to a problem that the sample size for each individual sector is very small. To have a better performance of the prediction model, we need to combine all the sectors together and make a uniformed and comparable large sample. We neutralized each factor cross-sectional for the factor to have a mean of 0 and standard deviation of 1. If <math id="S5.SS1.p1.m1" class="ltx_Math" alttext="X_{i,t}" display="inline"><msub><mi>X</mi><mrow><mi>i</mi><mo>,</mo><mi>t</mi></mrow></msub></math> denotes one specific factor exposure for <math id="S5.SS1.p1.m2" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math>-th sector at time <math id="S5.SS1.p1.m3" class="ltx_Math" alttext="t" display="inline"><mi>t</mi></math>, in this case would be at <math id="S5.SS1.p1.m4" class="ltx_Math" alttext="t" display="inline"><mi>t</mi></math>-th quarter, then for each individual <math id="S5.SS1.p1.m5" class="ltx_Math" alttext="t" display="inline"><mi>t</mi></math> we have the neutralized exposure to be:</p>
+<table id="S5.Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S5.Ex4.m1" class="ltx_Math" alttext="X_{i,t}\text{ -Neutral}=\frac{X_{i,t}-\text{Mean}(X_{i,t}\text{ ,}i\text{ from%
+ }1\text{ to }11)}{\text{Standard Deviation}(X_{i,t}\text{ ,}i\text{ from }1%
+\text{ to }11)}" display="block"><mrow><mrow><msub><mi>X</mi><mrow><mi>i</mi><mo>,</mo><mi>t</mi></mrow></msub><mo>⁢</mo><mtext> -Neutral</mtext></mrow><mo>=</mo><mfrac><mrow><msub><mi>X</mi><mrow><mi>i</mi><mo>,</mo><mi>t</mi></mrow></msub><mo>−</mo><mrow><mtext>Mean</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>X</mi><mrow><mi>i</mi><mo>,</mo><mi>t</mi></mrow></msub><mo>⁢</mo><mtext> ,</mtext><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mtext> from </mtext><mo>⁢</mo><mn>1</mn><mo>⁢</mo><mtext> to </mtext><mo>⁢</mo><mn>11</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mrow><mtext>Standard Deviation</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>X</mi><mrow><mi>i</mi><mo>,</mo><mi>t</mi></mrow></msub><mo>⁢</mo><mtext> ,</mtext><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mtext> from </mtext><mo>⁢</mo><mn>1</mn><mo>⁢</mo><mtext> to </mtext><mo>⁢</mo><mn>11</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Then we used the next quarter’s cross-sectional normalized return as the corresponding return. First, we want to have a general view of the relations. The scatter plots between neutralized factors and future returns are as following:</p>
+<img src="rPE.png" id="S5.SS1.p1.g1" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]"><img src="rPB.png" id="S5.SS1.p1.g2" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]"><img src="rOM.png" id="S5.SS1.p1.g3" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]"><img src="rEV2EBIT.png" id="S5.SS1.p1.g4" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]"><img src="rEV2EBITDA.png" id="S5.SS1.p1.g5" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]"><img src="rEV2Sales.png" id="S5.SS1.p1.g6" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]"><img src="rOM.png" id="S5.SS1.p1.g7" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]"><img src="rDIV_Y.png" id="S5.SS1.p1.g8" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]"><img src="rROE.png" id="S5.SS1.p1.g9" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]"><img src="rROA.png" id="S5.SS1.p1.g10" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]">
+<p class="ltx_p">From the scatter plots, the relations between all factors and their future returns cannot be well interpreted by simple linear models. However, it is very common in the financial field that the sample will have a very low signal-noise ratio.</p>
+</div>
+</section>
+<section id="S5.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">5.2 </span>Model Construction and Training</h3>
+
+<div id="S5.SS2.p1" class="ltx_para">
+<p class="ltx_p">As we observed before, the relations between each factor and its future return cannot be interpreted very well by linear models. Also, we have no idea what model would exactly best fit the data. Therefore, converting prediction of future returns to a classification problem and fitting the training sample with a neural network model which has comparably good performance with non-linear relations would be a great start point.</p>
+<span class="ltx_ERROR ltx_centering undefined">{neuralnetwork}</span>
+<p class="ltx_p ltx_align_center">[height=10]
+
+
+
+
+<span class="ltx_ERROR undefined">\inputlayer</span>[count=10, bias=false, title=Input</p>
+<p class="ltx_p ltx_align_center">layer, text=<math id="S5.SS2.p1.m1" class="ltx_Math" alttext="x_{\hiddenlayer}" display="inline"><msub><mi>x</mi><merror class="ltx_ERROR undefined undefined"><mtext>\hiddenlayer</mtext></merror></msub></math>[count=5, bias=false, title=Hidden</p>
+<p class="ltx_p ltx_align_center">layer 1, text=<math id="S5.SS2.p1.m2" class="ltx_Math" alttext="h^{(1)}_{\linklayers}" display="inline"><msubsup><mi mathsize="90%">h</mi><merror class="ltx_ERROR undefined undefined"><mtext>\linklayers</mtext></merror><mrow><mo maxsize="90%" minsize="90%">(</mo><mn mathsize="90%">1</mn><mo maxsize="90%" minsize="90%">)</mo></mrow></msubsup></math><span class="ltx_ERROR undefined">\hiddenlayer</span><span class="ltx_text" style="font-size:90%;">[count=5, bias=false, title=Hidden
+<br class="ltx_break">layer 2, text=<math id="S5.SS2.p1.m3" class="ltx_Math" alttext="h^{(2)}_{\linklayers}" display="inline"><msubsup><mi>h</mi><merror class="ltx_ERROR undefined undefined"><mtext>\linklayers</mtext></merror><mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></msubsup></math><span class="ltx_ERROR undefined">\outputlayer</span>[count=2, title=Output
+<br class="ltx_break">layer, text=<math id="S5.SS2.p1.m4" class="ltx_Math" alttext="\hat{y}_{\linklayers}" display="inline"><msub><mover accent="true"><mi>y</mi><mo>^</mo></mover><merror class="ltx_ERROR undefined undefined"><mtext>\linklayers</mtext></merror></msub></math></span></p>
+<p class="ltx_p">Neural network takes a vector as the input, and goes to each of the neuron in the first hidden layer and gains new activation vectors which act as the input for next hidden layer. After the last hidden layer, neural network model would pass out the probability for each of the prediction class and we choose the one with the highest probability as the prediction. This process is called front propagation. After comparing the prediction to the actual results, we adjust the weights of the nodes by using back propagation for each training pair in the training samples. Also, we use the rectified linear unit function as the activation function for hidden layers and sigmoid function as the activation function for final output. Since we only have a sample of size 200, choosing quasi-Newton methods as the solver has better performance for small sample training.
+Then we need to construct the training, validation, and test sets. Since the fundamental factors are already neutralized (normalized) within each sector, we divide the sample data to 60<math id="S5.SS2.p1.m5" class="ltx_Math" alttext="\%" display="inline"><mo>%</mo></math>, 20<math id="S5.SS2.p1.m6" class="ltx_Math" alttext="\%" display="inline"><mo>%</mo></math>, 20<math id="S5.SS2.p1.m7" class="ltx_Math" alttext="\%" display="inline"><mo>%</mo></math> by convention. Without shuffling, we will have the historical data divided where test set contains the most recent data. For the corresponding output value, we assign 1 to samples with positive future return and 0 with negative returns.
+The complexity of neural network directly related to the number and sizes of hidden layers. For the purpose of avoiding overfitting or under-fitting, we need to find proper hyper parameters for neural network model. We start from a simple model with two layers. Let <math id="S5.SS2.p1.m8" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> denote the number of nodes in each hidden layer, alpha is the hyper parameter for L2 regularization penalty function. With larger <math id="S5.SS2.p1.m9" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>, the model is more complex. If alpha increases, the penalty for large weights increases, which makes the model tend to be more simple. Considering our sample size is small, intuitively we need to focus more on the overfitting problem. For a range of alpha and <math id="S5.SS2.p1.m10" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>, we train the model using the training set data, and get the score for prediction on validation set. The score represents the probability of making a right prediction. Here are the results:</p>
+<table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">N<math id="S5.SS2.p1.m11" class="ltx_Math" alttext="\backslash" display="inline"><mo>\</mo></math>alpha</th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">3</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">2.5</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">2</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">1.5</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">1</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.5</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.25</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.1</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.01</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.001</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">5</th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.49</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.45</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.49</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.56</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.62</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.58</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.62</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.58</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.56</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.56</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">6</th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.51</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.55</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.45</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.49</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.51</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.49</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.47</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.56</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.56</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.56</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">7</th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.55</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.53</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.56</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.51</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.47</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.51</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.58</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.49</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.53</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.57</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">8</th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.51</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.47</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.55</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.51</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.51</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.64</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.6</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.6</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.59</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.6</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">9</th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.53</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.49</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.47</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.53</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.56</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.56</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.55</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.6</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.53</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.6</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">10</th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.55</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.53</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.53</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.53</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.51</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.51</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.53</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.6</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.6</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.56</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">11</th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.53</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.58</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.51</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.51</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.47</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.65</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.58</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.55</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.56</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.51</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">12</th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.55</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.55</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.56</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.51</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.49</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.51</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.54</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.53</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.53</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.53</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">13</th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.53</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.47</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.55</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.49</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.56</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.6</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.55</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.58</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.6</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.56</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">14</th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.49</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.51</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.56</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.53</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.55</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.53</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.49</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.51</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.6</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">0.53</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_row ltx_border_b ltx_border_l ltx_border_r ltx_border_t">15</th>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t">0.47</td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t">0.51</td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t">0.51</td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t">0.51</td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t">0.45</td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t">0.49</td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t">0.56</td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t">0.6</td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t">0.56</td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t">0.55</td>
+</tr>
+</tbody>
+</table>
+<p class="ltx_p">To better understand how the hyperparameters influence model performance, we visualize the data by using <math id="S5.SS2.p1.m12" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> and alpha as the bottom coordinates, and use the corresponding probability as the height.</p>
+<img src="hyperparameter_performance.png" id="S5.SS2.p1.g1" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]">
+<p class="ltx_p">From the figure, we can tell that the model have several local optimal pairs. And the scores at the optimal points with relative large N values are also combined with small alpha values. For example, the combination of 14 nodes and alpha equals 0.01 has a local optimal score of 0.6. Since we are training with a small sample, using such a complex model with a high score is highly likely overfitting. Therefore, we start from the simple model by looking at models with 5 nodes model and check how the score varies with alpha. For model with 5 nodes, we see there are two local peaks with alpha equal to 1 and 0.25, then we pick the middle value 0.5 as the value of alpha considering the trade-off between variance and bias.</p>
+</div>
+</section>
+<section id="S5.SS3" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">5.3 </span>Model Performance</h3>
+
+<div id="S5.SS3.p1" class="ltx_para">
+<p class="ltx_p">Constructed and trained the model, next we would test the model by feeding a new data set to the model. On the test set, the score of the model is 0.64, which means the model predicts 64<math id="S5.SS3.p1.m1" class="ltx_Math" alttext="\%" display="inline"><mo>%</mo></math> of the results correctly. More detailed results are showed in the following table:</p>
+</div>
+<figure id="S5.SS3.tab1" class="ltx_table">
+<table class="ltx_tabular ltx_guessed_headers ltx_align_middle">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t"></th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">Positive Return</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">Negative Return</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">Actual Sample</th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">27</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">28</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">Prediction</th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">37</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">18</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_l ltx_border_r ltx_border_t">Correct Prediction</th>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">22</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">13</td>
+</tr>
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_b ltx_border_l ltx_border_r ltx_border_t">Winning Rate</th>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t">0.59</td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t">0.72</td>
+</tr>
+</tbody>
+</table>
+</figure>
+<div id="S5.SS3.p2" class="ltx_para">
+<p class="ltx_p">On the test set, we have a 0.59 winning rates on the positive predictions and 0.72 on the negative predictions, which gives an overall winning rate of 0.64.</p>
+</div>
+</section>
+<section id="S5.SS4" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">5.4 </span>Trade with Model Prediction</h3>
+
+<div id="S5.SS4.p1" class="ltx_para">
+<p class="ltx_p">By using the predictions from the trained model, we used the data from validation set to get trade signals. Instead of having signals of 1 or 0 as the model’s output, we choose the probability of the prediction output being 1, which is given by the activation sigmoid function. Then we will have a time series of the probability for each sector, and rank the probability from highest to lowest where the highest probability will have a rank 1. For each cross-sectional ranking, we equally-weighted long sectors with rank 1 to 3 and short sectors with rank 9 to 11 to construct a dollar-neutral portfolio. On the test set, which is from September in 2020 to September in 2021, we have a Sharpe ratio of 2.21. The cumulative return plot is following:</p>
+<img src="trade_on_model.png" id="S5.SS4.p1.g1" class="ltx_graphics ltx_centering" alt="[Uncaptioned image]">
+</div>
+</section>
+<section id="S5.SS5" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">5.5 </span>Other Considerations</h3>
+
+<div id="S5.SS5.p1" class="ltx_para">
+<p class="ltx_p">There are still issues that need to be considered carefully in the future. First is the factor neutralization. In previous model, we neutralized the factor exposure cross-sectionally, where the exposures reflect the relative level of factor exposure for one sector compared to other sectors at a given time. However, different sectors may have inner trends of higher exposures than others for some factors, especially for fundamental factor. What’s more, we only have quarterly fundamental data available from 2017 and it is hard to implement time series normalization for each sector. Therefore, how to modify the factor exposures to make them comparable is a difficult problem. Secondly, as the sample size is small, the model might not be applicable on a wider range of time since we only trained and tested on the most recent five years. One possible way to improve this model is to use daily factors such as volume, close price as input, and convert fundamental factors to daily frequency by the corresponding quarter. Then we would have a sample size of approximately 1250 for each sector and over 13000 samples for training. However, the model might depends more on the daily factors rather than fundamental factors since their exposures would be the same value for each quarter.</p>
+</div>
+</section>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">6 </span>References</h2>
+
+<div id="S6.p1" class="ltx_para">
+<p class="ltx_p">1. <span class="ltx_text ltx_font_italic">Returns to Buying Winners and Selling Losers: Implications for Stock Market Efficiency</span> Narasimhan Jegadeesh; Sheridan Titman
+The Journal of Finance, Vol. 48, No. 1. (Mar., 1993), pp. 65-91.
+<br class="ltx_break">2.The Global Industry Classification Standard, MSCI (1999)</p>
+</div>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Tue Apr 23 13:49:15 2024 by <a href="http://dlmf.nist.gov/LaTeXML/" class="ltx_LaTeXML_logo"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="Mascot Sammy"></a>
+</div></footer>
+</div>
+</body>
+</html>

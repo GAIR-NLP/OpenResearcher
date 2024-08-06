@@ -1,0 +1,444 @@
+\begin{thebibliography}{10}
+
+\bibitem{jiang2022flexible}
+Shan Jiang, Xuejun Liu, Jianpeng Liu, Dong Ye, Yongqing Duan, Kan Li, Zhouping
+  Yin, and YongAn Huang.
+\newblock Flexible metamaterial electronics.
+\newblock {\em Advanced Materials}, 34(52):2200070, 2022.
+
+\bibitem{boley2019shape}
+J~William Boley, Wim~M Van~Rees, Charles Lissandrello, Mark~N Horenstein,
+  Ryan~L Truby, Arda Kotikian, Jennifer~A Lewis, and L~Mahadevan.
+\newblock Shape-shifting structured lattices via multimaterial 4d printing.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  116(42):20856--20862, 2019.
+
+\bibitem{ma2022deep}
+Chunping Ma, Yilong Chang, Shuai Wu, and Ruike~Renee Zhao.
+\newblock Deep learning-accelerated designs of tunable magneto-mechanical
+  metamaterials.
+\newblock {\em ACS Applied Materials \& Interfaces}, 14(29):33892--33902, 2022.
+
+\bibitem{casadei_piezoelectric_2012}
+Filippo Casadei, Tommaso Delpero, Andrea Bergamini, Paolo Ermanni, and Massimo
+  Ruzzene.
+\newblock {Piezoelectric resonator arrays for tunable acoustic waveguides and
+  metamaterials}.
+\newblock {\em Journal of Applied Physics}, 112(6):064902, 09 2012.
+
+\bibitem{liu2020acoustic}
+Guang-Sheng Liu, Yang Zhou, Ming-Hao Liu, Ying Yuan, Xin-Ye Zou, and Jian-Chun
+  Cheng.
+\newblock Acoustic waveguide with virtual soft boundary based on metamaterials.
+\newblock {\em Scientific Reports}, 10(1):981, 2020.
+
+\bibitem{kim2021poroelastic}
+Gunho Kim, Carlos~M Portela, Paolo Celli, Antonio Palermo, and Chiara Daraio.
+\newblock Poroelastic microlattices for underwater wave focusing.
+\newblock {\em Extreme Mechanics Letters}, 49:101499, 2021.
+
+\bibitem{xie2018acoustic}
+Yangbo Xie, Yangyang Fu, Zhetao Jia, Junfei Li, Chen Shen, Yadong Xu, Huanyang
+  Chen, and Steven~A Cummer.
+\newblock Acoustic imaging with metamaterial luneburg lenses.
+\newblock {\em Scientific reports}, 8(1):16188, 2018.
+
+\bibitem{matlack2016composite}
+Kathryn~H Matlack, Anton Bauhofer, Sebastian Kr{\"o}del, Antonio Palermo, and
+  Chiara Daraio.
+\newblock Composite 3d-printed metastructures for low-frequency and broadband
+  vibration absorption.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  113(30):8386--8390, 2016.
+
+\bibitem{krodel2015wide}
+Sebastian Kr{\"o}del, Nicolas Thom{\'e}, and Chiara Daraio.
+\newblock Wide band-gap seismic metastructures.
+\newblock {\em Extreme Mechanics Letters}, 4:111--117, 2015.
+
+\bibitem{bayat2018wave}
+Alireza Bayat and Stavros Gaitanaros.
+\newblock Wave directionality in three-dimensional periodic lattices.
+\newblock {\em Journal of Applied Mechanics}, 85(1):011004, 2018.
+
+\bibitem{ronellenfitsch2019inverse}
+Henrik Ronellenfitsch, Norbert Stoop, Josephine Yu, Aden Forrow, and J{\"o}rn
+  Dunkel.
+\newblock Inverse design of discrete mechanical metamaterials.
+\newblock {\em Physical Review Materials}, 3(9):095201, 2019.
+
+\bibitem{goh2020inverse}
+Heedong Goh and Loukas~F Kallivokas.
+\newblock Inverse band gap design of elastic metamaterials for p and sv wave
+  control.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering},
+  370:113263, 2020.
+
+\bibitem{li2020designing}
+Xiang Li, Shaowu Ning, Zhanli Liu, Ziming Yan, Chengcheng Luo, and Zhuo Zhuang.
+\newblock {Designing phononic crystal with anticipated band gap through a deep
+  learning based data-driven method}.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering},
+  361:112737, 2020.
+
+\bibitem{zhang2021realization}
+Xiaopeng Zhang, Jian Xing, Pai Liu, Yangjun Luo, and Zhan Kang.
+\newblock Realization of full and directional band gap design by non-gradient
+  topology optimization in acoustic metamaterials.
+\newblock {\em Extreme Mechanics Letters}, 42:101126, 2021.
+
+\bibitem{chen2022see}
+Zhi Chen, Alexander Ogren, Chiara Daraio, L~Catherine Brinson, and Cynthia
+  Rudin.
+\newblock How to see hidden patterns in metamaterials with interpretable
+  machine learning.
+\newblock {\em Extreme Mechanics Letters}, 57:101895, 2022.
+
+\bibitem{vismara2019solar}
+Robin Vismara, Nils~Odebo L{\"a}nk, Ruggero Verre, Mikael K{\"a}ll, Olindo
+  Isabella, and Miro Zeman.
+\newblock Solar harvesting based on perfect absorbing all-dielectric
+  nanoresonators on a mirror.
+\newblock {\em Optics Express}, 27(16):A967--A980, 2019.
+
+\bibitem{cheng2021plasmonic}
+Yongzhi Cheng, Fu~Chen, and Hui Luo.
+\newblock Plasmonic chiral metasurface absorber based on bilayer fourfold
+  twisted semicircle nanostructure at optical frequency.
+\newblock {\em Nanoscale Research Letters}, 16:1--9, 2021.
+
+\bibitem{inampudi2018neural}
+Sandeep Inampudi and Hossein Mosallaei.
+\newblock Neural network based design of metagratings.
+\newblock {\em Applied Physics Letters}, 112(24), 2018.
+
+\bibitem{zhelyeznyakov2021deep}
+Maksym~V Zhelyeznyakov, Steve Brunton, and Arka Majumdar.
+\newblock Deep learning to accelerate scatterer-to-field mapping for inverse
+  design of dielectric metasurfaces.
+\newblock {\em ACS Photonics}, 8(2):481--488, 2021.
+
+\bibitem{liu2018training}
+Dianjing Liu, Yixuan Tan, Erfan Khoram, and Zongfu Yu.
+\newblock Training deep neural networks for the inverse design of nanophotonic
+  structures.
+\newblock {\em Acs Photonics}, 5(4):1365--1369, 2018.
+
+\bibitem{ma2019probabilistic}
+Wei Ma, Feng Cheng, Yihao Xu, Qinlong Wen, and Yongmin Liu.
+\newblock Probabilistic representation and inverse design of metamaterials
+  based on a deep generative model with semi-supervised learning strategy.
+\newblock {\em Advanced Materials}, 31(35):1901111, 2019.
+
+\bibitem{An2021MultifunctionalNetwork}
+Sensong An, Bowen Zheng, Hong Tang, Mikhail~Y. Shalaginov, Li~Zhou, Hang Li,
+  Myungkoo Kang, Kathleen~A. Richardson, Tian Gu, Juejun Hu, Clayton Fowler,
+  and Hualiang Zhang.
+\newblock {Multifunctional Metasurface Design with a Generative Adversarial
+  Network}.
+\newblock {\em Advanced Optical Materials}, 9(5):1--10, 2021.
+
+\bibitem{Malkiel2018PlasmonicLearning}
+Itzik Malkiel, Michael Mrejen, Achiya Nagler, Uri Arieli, Lior Wolf, and Haim
+  Suchowski.
+\newblock {Plasmonic nanostructure design and characterization via Deep
+  Learning}.
+\newblock {\em Light: Science and Applications}, 7(1), 2018.
+
+\bibitem{lee2023data}
+Doksoo Lee, Wei~Wayne Chen, Liwei Wang, Yu-Chin Chan, and Wei Chen.
+\newblock Data-driven design for metamaterials and multiscale systems: A
+  review.
+\newblock {\em arXiv preprint arXiv:2307.05506}, 2023.
+
+\bibitem{an2019deep}
+Sensong An, Clayton Fowler, Bowen Zheng, Mikhail~Y Shalaginov, Hong Tang, Hang
+  Li, Li~Zhou, Jun Ding, Anuradha~Murthy Agarwal, Clara Rivero-Baleine, et~al.
+\newblock A deep learning approach for objective-driven all-dielectric
+  metasurface design.
+\newblock {\em ACS Photonics}, 6(12):3196--3207, 2019.
+
+\bibitem{kumar2020inverse}
+Siddhant Kumar, Stephanie Tan, Li~Zheng, and Dennis~M Kochmann.
+\newblock Inverse-designed spinodoid metamaterials.
+\newblock {\em npj Computational Materials}, 6(1):1--10, 2020.
+
+\bibitem{Yeung2021MultiplexedNetworks}
+Christopher Yeung, Ju~Ming Tsai, Brian King, Benjamin Pham, David Ho, Julia
+  Liang, Mark~W. Knight, and Aaswath~P. Raman.
+\newblock {Multiplexed supercell metasurface design and optimization with
+  tandem residual networks}.
+\newblock {\em Nanophotonics}, 10(3):1133--1143, 1 2021.
+
+\bibitem{bastek2022inverting}
+Jan-Hendrik Bastek, Siddhant Kumar, Bastian Telgen, Rapha{\"e}l~N Glaesener,
+  and Dennis~M Kochmann.
+\newblock Inverting the structure--property map of truss metamaterials by deep
+  learning.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  119(1):e2111505119, 2022.
+
+\bibitem{jiang2019free}
+Jiaqi Jiang, David Sell, Stephan Hoyer, Jason Hickey, Jianji Yang, and
+  Jonathan~A Fan.
+\newblock Free-form diffractive metagrating design based on generative
+  adversarial networks.
+\newblock {\em ACS nano}, 13(8):8872--8878, 2019.
+
+\bibitem{so2019designing}
+Sunae So and Junsuk Rho.
+\newblock Designing nanophotonic structures using conditional deep
+  convolutional generative adversarial networks.
+\newblock {\em Nanophotonics}, 8(7):1255--1261, 2019.
+
+\bibitem{wen2020robust}
+Fufang Wen, Jiaqi Jiang, and Jonathan~A Fan.
+\newblock Robust freeform metasurface design based on progressively growing
+  generative networks.
+\newblock {\em ACS Photonics}, 7(8):2098--2104, 2020.
+
+\bibitem{gurbuz2021generative}
+Caglar Gurbuz, Felix Kronowetter, Christoph Dietz, Martin Eser, Jonas Schmid,
+  and Steffen Marburg.
+\newblock Generative adversarial networks for the design of acoustic
+  metamaterials.
+\newblock {\em The Journal of the Acoustical Society of America},
+  149(2):1162--1174, 2021.
+
+\bibitem{lew2023single}
+Andrew~J Lew and Markus~J Buehler.
+\newblock Single-shot forward and inverse hierarchical architected materials
+  design for nonlinear mechanical properties using an attention-diffusion
+  model.
+\newblock {\em Materials Today}, 64:10--20, 2023.
+
+\bibitem{elzouka2020interpretable}
+Mahmoud Elzouka, Charles Yang, Adrian Albert, Ravi~S Prasher, and Sean~D
+  Lubner.
+\newblock Interpretable forward and inverse design of particle spectral
+  emissivity using common machine-learning models.
+\newblock {\em Cell Reports Physical Science}, 1(12), 2020.
+
+\bibitem{breiman2001random}
+Leo Breiman.
+\newblock Random forests.
+\newblock {\em Machine learning}, 45:5--32, 2001.
+
+\bibitem{hastings1970monte}
+WK~Hastings.
+\newblock Monte carlo sampling methods using markov chains and their
+  applications.
+\newblock {\em Biometrika}, pages 97--109, 1970.
+
+\bibitem{BreiFrieStonOlsh84}
+Leo Breiman, Jerome Friedman, Charles~J Stone, and R~A Olshen.
+\newblock {\em Classification and Regression Trees}.
+\newblock Chapman and Hall/CRC, 1984.
+
+\bibitem{chawla2002smote}
+Nitesh~V Chawla, Kevin~W Bowyer, Lawrence~O Hall, and W~Philip Kegelmeyer.
+\newblock Smote: synthetic minority over-sampling technique.
+\newblock {\em Journal of artificial intelligence research}, 16:321--357, 2002.
+
+\bibitem{pendry2000negative}
+John~Brian Pendry.
+\newblock Negative refraction makes a perfect lens.
+\newblock {\em Physical review letters}, 85(18):3966, 2000.
+
+\bibitem{yu2011light}
+Nanfang Yu, Patrice Genevet, Mikhail~A Kats, Francesco Aieta, Jean-Philippe
+  Tetienne, Federico Capasso, and Zeno Gaburro.
+\newblock Light propagation with phase discontinuities: generalized laws of
+  reflection and refraction.
+\newblock {\em science}, 334(6054):333--337, 2011.
+
+\bibitem{kildishev2013planar}
+Alexander~V Kildishev, Alexandra Boltasseva, and Vladimir~M Shalaev.
+\newblock Planar photonics with metasurfaces.
+\newblock {\em Science}, 339(6125):1232009, 2013.
+
+\bibitem{cui2014coding}
+Tie~Jun Cui, Mei~Qing Qi, Xiang Wan, Jie Zhao, and Qiang Cheng.
+\newblock Coding metamaterials, digital metamaterials and programmable
+  metamaterials.
+\newblock {\em Light: science \& applications}, 3(10):e218--e218, 2014.
+
+\bibitem{bukhari2019metasurfaces}
+Syed~S Bukhari, J~Yiannis Vardaxoglou, and William Whittow.
+\newblock A metasurfaces review: Definitions and applications.
+\newblock {\em Applied Sciences}, 9(13):2727, 2019.
+
+\bibitem{hu2021review}
+Jie Hu, Sankhyabrata Bandyopadhyay, Yu-hui Liu, and Li-yang Shao.
+\newblock A review on metasurface: from principle to smart metadevices.
+\newblock {\em Frontiers in Physics}, 8:586087, 2021.
+
+\bibitem{landy2008perfect}
+N~I{\^e} Landy, S~Sajuyigbe, Jack~J Mock, David~R Smith, and Willie~J Padilla.
+\newblock Perfect metamaterial absorber.
+\newblock {\em Physical review letters}, 100(20):207402, 2008.
+
+\bibitem{liu2010infrared}
+Xianliang Liu, Tatiana Starr, Anthony~F Starr, and Willie~J Padilla.
+\newblock Infrared spatial and frequency selective metamaterial with near-unity
+  absorbance.
+\newblock {\em Physical review letters}, 104(20):207403, 2010.
+
+\bibitem{hao2010high}
+Jiaming Hao, Jing Wang, Xianliang Liu, Willie~J Padilla, Lei Zhou, and Min Qiu.
+\newblock High performance optical absorber based on a plasmonic metamaterial.
+\newblock {\em Applied Physics Letters}, 96(25), 2010.
+
+\bibitem{watts2012metamaterial}
+Claire~M Watts, Xianliang Liu, and Willie~J Padilla.
+\newblock Metamaterial electromagnetic wave absorbers.
+\newblock {\em Advanced materials}, 24(23):OP98--OP120, 2012.
+
+\bibitem{cui2014plasmonic}
+Yanxia Cui, Yingran He, Yi~Jin, Fei Ding, Liu Yang, Yuqian Ye, Shoumin Zhong,
+  Yinyue Lin, and Sailing He.
+\newblock Plasmonic and metamaterial structures as electromagnetic absorbers.
+\newblock {\em Laser \& Photonics Reviews}, 8(4):495--520, 2014.
+
+\bibitem{liu2017experimental}
+Xinyu Liu, Kebin Fan, Ilya~V Shadrivov, and Willie~J Padilla.
+\newblock Experimental realization of a terahertz all-dielectric metasurface
+  absorber.
+\newblock {\em Optics express}, 25(1):191--201, 2017.
+
+\bibitem{lee2018complete}
+Gun-Yeal Lee, Gwanho Yoon, Seung-Yeol Lee, Hansik Yun, Jaebum Cho, Kyookeun
+  Lee, Hwi Kim, Junsuk Rho, and Byoungho Lee.
+\newblock Complete amplitude and phase control of light using broadband
+  holographic metasurfaces.
+\newblock {\em Nanoscale}, 10(9):4237--4245, 2018.
+
+\bibitem{zhou2018multilayer}
+You Zhou, Ivan~I Kravchenko, Hao Wang, J~Ryan Nolen, Gong Gu, and Jason
+  Valentine.
+\newblock Multilayer noninteracting dielectric metasurfaces for multiwavelength
+  metaoptics.
+\newblock {\em Nano letters}, 18(12):7529--7537, 2018.
+
+\bibitem{li2018wideband}
+You Li, Qunsheng Cao, and Yi~Wang.
+\newblock A wideband multifunctional multilayer switchable linear polarization
+  metasurface.
+\newblock {\em IEEE Antennas and Wireless Propagation Letters},
+  17(7):1314--1318, 2018.
+
+\bibitem{marino2021harmonic}
+Giuseppe Marino, Davide Rocco, Carlo Gigli, Gr{\'e}goire Beaudoin, Konstantinos
+  Pantzas, St{\'e}phan Suffit, Pascal Filloux, Isabelle Sagnes, Giuseppe Leo,
+  and Costantino De~Angelis.
+\newblock Harmonic generation with multi-layer dielectric metasurfaces.
+\newblock {\em Nanophotonics}, 10(7):1837--1843, 2021.
+
+\bibitem{malek2022multifunctional}
+Stephanie~C Malek, Adam~C Overvig, Andrea Al{\`u}, and Nanfang Yu.
+\newblock Multifunctional resonant wavefront-shaping meta-optics based on
+  multilayer and multi-perturbation nonlocal metasurfaces.
+\newblock {\em Light: Science \& Applications}, 11(1):246, 2022.
+
+\bibitem{zhang2023high}
+Yuanjian Zhang, Yingting Yi, Wenxin Li, Shiri Liang, Jing Ma, Shubo Cheng,
+  Wenxing Yang, and Yougen Yi.
+\newblock High absorptivity and ultra-wideband solar absorber based on ti-al2o3
+  cross elliptical disk arrays.
+\newblock {\em Coatings}, 13(3):531, 2023.
+
+\bibitem{zhang2020bayesian}
+Yichi Zhang, Daniel~W Apley, and Wei Chen.
+\newblock Bayesian optimization for materials design with mixed quantitative
+  and qualitative variables.
+\newblock {\em Scientific reports}, 10(1):4924, 2020.
+
+\bibitem{ma2020vaem}
+Chao Ma, Sebastian Tschiatschek, Richard Turner, Jos{\'e}~Miguel
+  Hern{\'a}ndez-Lobato, and Cheng Zhang.
+\newblock Vaem: a deep generative model for heterogeneous mixed type data.
+\newblock {\em Advances in Neural Information Processing Systems},
+  33:11237--11247, 2020.
+
+\bibitem{xu2018synthesizing}
+Lei Xu and Kalyan Veeramachaneni.
+\newblock Synthesizing tabular data using generative adversarial networks.
+\newblock {\em arXiv preprint arXiv:1811.11264}, 2018.
+
+\bibitem{chan2021metaset}
+Yu-Chin Chan, Faez Ahmed, Liwei Wang, and Wei Chen.
+\newblock Metaset: Exploring shape and property spaces for data-driven
+  metamaterials design.
+\newblock {\em Journal of Mechanical Design}, 143(3):031707, 2021.
+
+\bibitem{lee2023t}
+Doksoo Lee, Yu-Chin Chan, Wei Chen, Liwei Wang, Anton van Beek, and Wei Chen.
+\newblock T-metaset: Task-aware acquisition of metamaterial datasets through
+  diversity-based active learning.
+\newblock {\em Journal of Mechanical Design}, 145(3):031704, 2023.
+
+\bibitem{liu2018generative}
+Zhaocheng Liu, Dayu Zhu, Sean~P Rodrigues, Kyu-Tae Lee, and Wenshan Cai.
+\newblock Generative model for the inverse design of metasurfaces.
+\newblock {\em Nano letters}, 18(10):6570--6576, 2018.
+
+\bibitem{vlassis2023denoising}
+Nikolaos~N Vlassis and WaiChing Sun.
+\newblock Denoising diffusion algorithm for inverse design of microstructures
+  with fine-tuned nonlinear material properties.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering},
+  413:116126, 2023.
+
+\bibitem{li2022digital}
+Weichen Li, Fengwen Wang, Ole Sigmund, and Xiaojia~Shelly Zhang.
+\newblock Digital synthesis of free-form multimaterial structures for
+  realization of arbitrary programmed mechanical responses.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  119(10):e2120563119, 2022.
+
+\bibitem{lin2023mechanical}
+Xin Lin, Fei Pan, Yong Ma, Yuling Wei, Kang Yang, Zihong Wu, Juan Guan, Bin
+  Ding, Bin Liu, Jinwu Xiang, et~al.
+\newblock Mechanical fourier transform for programmable metamaterials.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  120(37):e2305380120, 2023.
+
+\bibitem{bossart2021oligomodal}
+Aleksi Bossart, David~MJ Dykstra, Jop Van~der Laan, and Corentin Coulais.
+\newblock Oligomodal metamaterials with multifunctional mechanics.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  118(21):e2018610118, 2021.
+
+\bibitem{an2021multifunctional}
+Sensong An, Bowen Zheng, Hong Tang, Mikhail~Y Shalaginov, Li~Zhou, Hang Li,
+  Myungkoo Kang, Kathleen~A Richardson, Tian Gu, Juejun Hu, et~al.
+\newblock Multifunctional metasurface design with a generative adversarial
+  network.
+\newblock {\em Advanced Optical Materials}, 9(5):2001433, 2021.
+
+\bibitem{wang2020deep}
+Liwei Wang, Yu-Chin Chan, Faez Ahmed, Zhao Liu, Ping Zhu, and Wei Chen.
+\newblock Deep generative modeling for mechanistic-based learning and design of
+  metamaterial systems.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering},
+  372:113377, 2020.
+
+\bibitem{chen2023gan}
+Wei Chen, Doksoo Lee, Oluwaseyi Balogun, and Wei Chen.
+\newblock Gan-duf: Hierarchical deep generative models for design under
+  free-form geometric uncertainty.
+\newblock {\em Journal of Mechanical Design}, 145(1):011703, 2023.
+
+\bibitem{comsol2020}
+{COMSOL AB}.
+\newblock Comsol multiphysics (version 5.6).
+\newblock \url{https://www.comsol.com}, 2020.
+\newblock Stockholm, Sweden.
+
+\bibitem{aspnes1983dielectric}
+David~E Aspnes and AA~Studna.
+\newblock Dielectric functions and optical parameters of si, ge, gap, gaas,
+  gasb, inp, inas, and insb from 1.5 to 6.0 ev.
+\newblock {\em Physical review B}, 27(2):985, 1983.
+
+\end{thebibliography}
