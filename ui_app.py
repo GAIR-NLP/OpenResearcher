@@ -41,7 +41,7 @@ st.markdown(
 )
 st.divider()
 st.markdown(
-    "<center><i>Welcome to OpenResearcher, an advanced Scientific Research Assistant designed to provide a helpful answer to a research query. <br> With access to the arXiv corpus, OpenResearcher is can provide you with the latest scientific insights. <br> Explore the frontiers of science with OpenResearcher—where answers await.</i></center>",
+    "<center><i>Welcome to OpenResearcher, an advanced Scientific Research Assistant designed to provide a helpful answer to a research query. <br> With access to the arXiv corpus, OpenResearcher can provide you with the latest scientific insights. <br> Explore the frontiers of science with OpenResearcher—where answers await.</i></center>",
     unsafe_allow_html=True,
 )
 st.divider()
@@ -64,10 +64,7 @@ with st.sidebar:
     )
 
     st.sidebar.image("images/logo.jpg", use_column_width=True)
-    st.markdown(
-        "<a style='display: block; text-align: center;' href='https://plms.ai/' target='_blank'>GAIR Lab</a>",
-        unsafe_allow_html=True,
-    )
+    
     st.write('')
     st.write('')
     st.write('')

@@ -2,7 +2,7 @@ from llama_index.core.tools import FunctionTool
 import nest_asyncio
 nest_asyncio.apply()
 from inspect import signature
-from llm.chat_llm import chat_deepseek_stream
+from llm.chat_llm import chat_openai_api_stream
 from config import math_tool_model
 
 def solve_math(query: str) -> str:
@@ -10,7 +10,7 @@ def solve_math(query: str) -> str:
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": query}
     ]
-    generator = chat_deepseek_stream(messages, model=math_tool_model)
+    generator = chat_openai_api_stream(messages, model=math_tool_model)
     response = ""
     for gen in generator:
         response += gen

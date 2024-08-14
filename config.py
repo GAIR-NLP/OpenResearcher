@@ -7,7 +7,7 @@ qdrant_host = "localhost" # qdrant search service url
 qdrant_port = 6333 # qdrant search service port
 qdrant_collection_prefix = "openresearcher" # qdrant collection's name
 sparse_doc_embed_model_path = "naver/efficient-splade-VI-BT-large-doc" # sparse doc_embed_model path
-sparse_query_embed_model_path = "naver/efficient-splade-VI-BT-large-query"# sparse query_embed_model path
+sparse_query_embed_model_path = "naver/efficient-splade-VI-BT-large-query" # sparse query_embed_model path
 
 openai_api_base_url = "api base url here"
 openai_api_key = "api key here"

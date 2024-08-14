@@ -1,7 +1,7 @@
 # OpenResearcher: Unleashing AI for Accelerated Scientific Research
 This is the official repository for OpenResearcher.
 
-
+**Note: This repository is actively maintained and regularly updated to provide the latest features and improvements.**
 
 ## 📋 Table of Contents
 
@@ -220,5 +220,13 @@ Then you can run the OpenResearcher system by following command:
 If this work is helpful, please kindly cite as:
 
 ```
-citation
+@misc{zheng2024openresearcherunleashingaiaccelerated,
+      title={OpenResearcher: Unleashing AI for Accelerated Scientific Research}, 
+      author={Yuxiang Zheng and Shichao Sun and Lin Qiu and Dongyu Ru and Cheng Jiayang and Xuefeng Li and Jifan Lin and Binjie Wang and Yun Luo and Renjie Pan and Yang Xu and Qingkai Min and Zizhao Zhang and Yiwen Wang and Wenjie Li and Pengfei Liu},
+      year={2024},
+      eprint={2408.06941},
+      archivePrefix={arXiv},
+      primaryClass={cs.IR},
+      url={https://arxiv.org/abs/2408.06941}, 
+}
 ```

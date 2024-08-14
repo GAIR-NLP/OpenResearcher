@@ -44,11 +44,20 @@ Your goal is to create a more informative and context-aware query that will help
 Please note that you cannot miss any query information from the user.
 Your response must only contain the new query phrased from the user's perspective.
 
+Here is an example you can refer to:
+[Example Begin]
+Conversation history:
+User: Recommend some datasets for verifying the correctness of model responses to factual questions.
+Assistant: Could you specify the academic field or domain you are interested in for these datasets?
+User: NLP in computer science
+
+Rewrited query:
+Recommend some datasets for verifying the correctness of model responses to factual questions in the field of NLP(Natural Language Processing).
+[Example End]
 ---
 Conversation history:
 {multi_turn_content}
 
----
 Rewrited query:
 """
 
@@ -59,7 +68,6 @@ def split_last_newline(input_string):
         return input_string[:last_newline_index]
     else:
         return input_string
-
 
 
 class Multi_Turn_Query_Understanding:
@@ -101,6 +109,8 @@ class Multi_Turn_Query_Understanding:
     def query_rewrite_according_messages(self, history_messages):
         multi_turn_content = ""
         for message in history_messages:
+            if 'role' not in message or 'content' not in message or message['role'] is None or message['content'] is None:
+                continue
             if message['role'] == "user":
                 multi_turn_content += "User: " + message['content'] + "\n"
             else:
@@ -112,5 +122,3 @@ class Multi_Turn_Query_Understanding:
         completion = chat(messages, model = query_understanding_model)
         for chunk in completion:
             yield chunk
-        
-    
