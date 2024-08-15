@@ -270,8 +270,8 @@ def get_final_response():
                 web_search_results.append(web_search_result)
         expanders.append(columns_info)
         final_response = st.write_stream(summerize(rewrite, sub_res_list))
-        retrieved_nodes = dedup_node(retrieved_nodes)
-        final_response_cite = add_citation_with_retrieved_node(retrieved_nodes, final_response)
+        deduped_nodes = dedup_node(retrieved_nodes)
+        final_response_cite = add_citation_with_retrieved_node(deduped_nodes, final_response)
     st.session_state.messages.append({"role": "assistant", 
                                       "content": final_response_cite, 
                                       "expanders": expanders})
@@ -329,7 +329,8 @@ if st.session_state.mode == 1 and st.session_state.done or st.session_state.cnt 
                 context_critic = "\n\n".join(nodes_arrangement(retrieved_nodes))
                 context_critic += "\n\n" + "\n\n".join(web_search_results)
                 refined_response = st.write_stream(self_refine(rewrite, context_critic, final_response, critic))
-                refined_response_cite = add_citation_with_retrieved_node(retrieved_nodes, refined_response)
+                deduped_nodes = dedup_node(retrieved_nodes)
+                refined_response_cite = add_citation_with_retrieved_node(deduped_nodes, refined_response)
                 st.session_state.messages.append({"role": "assistant", 
                                                 "content": refined_response_cite,
                                                 "critic_expander": ("Self Critic:", critic)})
