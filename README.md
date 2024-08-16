@@ -23,12 +23,12 @@ This is the official repository for OpenResearcher.
 
 <p align="center"> Welcome to OpenResearcher, an advanced Scientific Research Assistant designed to provide a helpful answer to a research query.
 
-<p align="center"> With access to the arXiv corpus, OpenResearcher is can provide you with the latest scientific insights.
+<p align="center"> With access to the arXiv corpus, OpenResearcher can provide the latest scientific insights.
 
 <p align="center"> Explore the frontiers of science with OpenResearcher—where answers await.
 
 ## 🏆 Performance
-We release the benchmarking results on various RAG-related system as a leaderboard.
+We release the benchmarking results on various RAG-related systems as a leaderboard.
 
 | Models                                             | Correctness |      |      | Richness |      |      | Relevance |      |      |
 | -------------------------------------------------- | :---------- | ---- | ---- | -------- | ---- | ---- | --------- | ---- | ---- |
@@ -40,7 +40,7 @@ We release the benchmarking results on various RAG-related system as a leaderboa
 | OpenResearcher                                     | **10**      | 13   | 7    | **25**   | 4    | 1    | **15**    | 13   | 2    |
 
 
-We used human experts to evaluate the responses from various RAG systems. If one answer was significantly better than another, it was judged as a win for the former and a lose for the latter. If the two answers were of similar quality, it was judged as a tie.
+We used human experts to evaluate the responses from various RAG systems. If one answer was significantly better than another, it was judged as a win for the former and a lose for the latter. If the two answers were similar, it was considered a tie.
 
 
 
@@ -102,7 +102,7 @@ OpenResearcher currently supports API models from [OpenAI](https://openai.com/),
 
 Modify the API and base URL values in the config.py file located in the root directory to use large language model service platforms that support the OpenAI interface
 
-For example, if you use [Deepseek](https://www.deepseek.com/) as API provider, and then modify the following value in `config.py`::
+For example, if you use [Deepseek](https://www.deepseek.com/) as an API provider, and then modify the following value in `config.py`::
 
 ```python
 ...
@@ -115,7 +115,7 @@ openai_api_key = "api key here"
 
 ### Using Opensource LLMs:
 
-Please use [vllm](https://github.com/vllm-project/vllm) to setup the API server for open source LLMs. For example, use the following command to deploy a Llama 3 70B hosted on HuggingFace:
+Please use [vllm](https://github.com/vllm-project/vllm) to set up the API server for open-source LLMs. For example, use the following command to deploy a Llama 3 70B hosted on HuggingFace:
 
 ```sh
 python -m vllm.entrypoints.openai.api_server \
@@ -182,7 +182,7 @@ CUDA_VISIBLE_DEVICES=0 python -um connector.html_parsing --target_dir /path/to/t
 --meta_data_path /path/to/metadata/file
 ```
 
-**Parameter explaination:**
+**Parameter explanation:**
 
 ​	**target_dir:** process the 'target_dir' papers
 
@@ -194,9 +194,9 @@ CUDA_VISIBLE_DEVICES=0 python -um connector.html_parsing --target_dir /path/to/t
 
 ### 📘 Usage
 
-### Run RAG application
+### Run the RAG application
 
-First run the Qdrant retriever server:
+First, run the Qdrant retriever server:
 
 ```sh
 python -um utils.async_qdrant_retriever
@@ -208,7 +208,7 @@ Then run the Elastic Search retriever server:
 python -um utils.async_elasticsearch_retriever
 ```
 
-Then you can run the OpenResearcher system by following command:
+Then you can run the OpenResearcher system by following the command:
 
 ```sh
  CUDA_VISIBLE_DEVICES=0 streamlit run ui_app.py
