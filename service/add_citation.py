@@ -44,10 +44,13 @@ def process_single_paper(paper, threshold: float, cited_papers: dict, cited_pape
     paper_title = paper.node.metadata['title']
     
     if paper_id not in cited_papers:
-        cited_papers[paper_id] = len(cited_papers) + 1
+        new_cite_number = len(cited_papers) + 1
+        cited_papers[paper_id] = new_cite_number
         cited_paper_list.append((paper_id, paper_title))
+    else:
+        new_cite_number = cited_papers[paper_id]
     
-    return f"[[{cited_papers[paper_id]}]](https://arxiv.org/abs/{paper_id})"
+    return f"[[{new_cite_number}]](https://arxiv.org/abs/{paper_id})"
 
 def process_two_papers(paper1, paper2, threshold: float, cited_papers: dict, cited_paper_list: List) -> str:
     citations = []
