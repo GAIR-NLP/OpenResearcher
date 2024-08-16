@@ -1,136 +1,142 @@
-from llama_index.core import QueryBundle
-from llama_index.core.schema import NodeWithScore
-from llama_index.core.vector_stores import VectorStoreQuery
-from llama_index.core.retrievers import BaseRetriever
-from config import category_list, qdrant_month_list, qdrant_collection_prefix
-from typing import List
-from llama_index.core.base.base_retriever import BaseRetriever
-from utils.qdrant_helper import *
-from config import qdrant_collection_prefix
-from service.field_selector import field_selector
-from service.date_selector import date_selector
-import concurrent.futures
+from typing import List, Optional, Tuple
+from concurrent.futures import ThreadPoolExecutor
+from dataclasses import dataclass
+from functools import lru_cache
+
 import pickle
 import requests
+from llama_index.core import QueryBundle
+from llama_index.core.schema import NodeWithScore
+from llama_index.core.retrievers import BaseRetriever
+from llama_index.core.postprocessor import BaseNodePostprocessor
 
-def get_retrieve_nodes(retriever, query):
-    return retriever.retrieve(query)
+from config import category_list, qdrant_month_list, qdrant_collection_prefix
+from service.field_selector import field_selector
+from service.date_selector import date_selector
 
-class SingleQdrantRetriever(BaseRetriever):
-    def __init__(
-        self,
-        embed_model,
-        vector_store,
-        similarity_top_k,
-        hybrid_top_k
-    ):
-        """Init params."""
-        super().__init__()
-        self.embed_model = embed_model
-        self.vector_store = vector_store
-        self.similarity_top_k = similarity_top_k
-        self.hybrid_top_k = hybrid_top_k
-        
-
-    def _retrieve(self, query_bundle: QueryBundle) -> List[NodeWithScore]:
-        emb = self.embed_model.get_text_embedding_batch([query_bundle.query_str])
-        q = VectorStoreQuery(
-            query_embedding=emb[0],
-            similarity_top_k=self.similarity_top_k,
-            query_str=query_bundle.query_str,
-            hybrid_top_k=self.hybrid_top_k,
-            mode='hybrid',
-        )
-        result = self.vector_store.query(q)
-        nodes = []
-        for i in range(len(result.nodes)):
-            nodes.append(NodeWithScore(node=result.nodes[i], 
-                                       score=result.similarities[i]))
-        return nodes
+@dataclass
+class RetrievalResult:
+    nodes: List[NodeWithScore]
+    category: str
+    month: str
 
 class QdrantRetriever(BaseRetriever):
     def __init__(
         self,
-        qdrant_api_url
-        # embed_model,
-        # similarity_top_k,
-        # hybrid_top_k,
-        # node_postprocessors,
-        # insert_batch_size=10,
+        qdrant_api_url: str,
+        node_postprocessors: Optional[List[BaseNodePostprocessor]] = None,
     ):
-        """Init params."""
+        """Initialize the QdrantRetriever.
+
+        Args:
+            qdrant_api_url (str): The URL for the Qdrant API endpoint.
+            node_postprocessors (Optional[List[BaseNodePostprocessor]]): List of node postprocessors.
+        """
         super().__init__()
         self.qdrant_api_url = qdrant_api_url
-        # client = QdrantClient(host=qdrant_host, port=qdrant_port)
-        # aclient = AsyncQdrantClient(host=qdrant_host, port=qdrant_port)
-        # self.node_postprocessors = node_postprocessors
-        # self.embed_model = embed_model
-        # self.similarity_top_k = similarity_top_k
-        # self.hybrid_top_k = hybrid_top_k
-        # self.retrievers_dict = {}
-        # for category in category_list:
-        #     for month in qdrant_month_list:
-        #         collection_name = "{}_{}_{}".format(qdrant_collection_prefix, category, month).replace(" ", "_").lower()
-        #         vector_store = QdrantVectorStore(
-        #             collection_name,
-        #             client=client,
-        #             aclient=aclient,
-        #             enable_hybrid=True,
-        #             batch_size=insert_batch_size,
-        #             sparse_doc_fn=sparse_doc_vectors,
-        #             sparse_query_fn=sparse_query_vectors,
-        #             hybrid_fusion_fn=reciprocal_rank_fusion,
-        #         )
-        #         retriever = SingleQdrantRetriever(embed_model=embed_model,
-        #                                             vector_store=vector_store,
-        #                                             similarity_top_k=similarity_top_k,
-        #                                             hybrid_top_k=hybrid_top_k)
-        #         self.retrievers_dict[collection_name] = retriever
+        self.node_postprocessors = node_postprocessors or []
 
-    def _retrieve(self, query, **kwargs):
-        nodes = []
-        query_str = query.query_str
-        need_categories = field_selector(query_str)
-        if len(need_categories) == 0:
-            need_categories = category_list
-        need_months = date_selector(query_str, range_type="qdrant")
-        if need_months is None:
-            need_months = qdrant_month_list
-        cur_retrievers = []
-        for category in need_categories:
-            for month in need_months:
-                collection_name = "{}_{}_{}".format(qdrant_collection_prefix, category, month).replace(" ", "_").lower()
-                cur_retrievers.append(self.retrievers_dict[collection_name])
-        for retriever in cur_retrievers:
-            nodes += retriever.retrieve(query, **kwargs)
+    @lru_cache(maxsize=128)
+    def _get_collection_name(self, category: str, month: str) -> str:
+        """Generate a collection name based on category and month.
+
+        Args:
+            category (str): The category of the collection.
+            month (str): The month of the collection.
+
+        Returns:
+            str: The formatted collection name.
+        """
+        return f"{qdrant_collection_prefix}_{category}_{month}".replace(" ", "_").lower()
+
+    def _api_retrieve(self, query: str, collection_name: str) -> List[NodeWithScore]:
+        """Retrieve nodes from the Qdrant API.
+
+        Args:
+            query (str): The query string.
+            collection_name (str): The name of the collection to query.
+
+        Returns:
+            List[NodeWithScore]: List of retrieved nodes with scores.
+        """
+        response = requests.post(
+            self.qdrant_api_url,
+            json={"query": query, "collection_name": collection_name}
+        )
+        return pickle.loads(response.content)
+
+    def _retrieve_parallel(self, query: str, categories: List[str], months: List[str]) -> List[RetrievalResult]:
+        """Perform parallel retrieval across multiple categories and months.
+
+        Args:
+            query (str): The query string.
+            categories (List[str]): List of categories to search.
+            months (List[str]): List of months to search.
+
+        Returns:
+            List[RetrievalResult]: List of retrieval results.
+        """
+        with ThreadPoolExecutor() as executor:
+            futures = [
+                executor.submit(self._api_retrieve, query, self._get_collection_name(category, month))
+                for category in categories
+                for month in months
+            ]
+            results = [
+                RetrievalResult(future.result(), category, month) 
+                for future, (category, month) in zip(futures, 
+                                                     [(cat, mon) for cat in categories for mon in months])
+            ]
+        return results
+
+    def _retrieve(self, query_bundle: QueryBundle) -> List[NodeWithScore]:
+        """Retrieve nodes based on the query bundle.
+
+        Args:
+            query_bundle (QueryBundle): The query bundle containing the query string.
+
+        Returns:
+            List[NodeWithScore]: List of retrieved nodes with scores.
+        """
+        query_str = query_bundle.query_str
+        categories = field_selector(query_str) or category_list
+        months = date_selector(query_str, range_type="qdrant") or qdrant_month_list
+
+        results = self._retrieve_parallel(query_str, categories, months)
+        nodes = [node for result in results for node in result.nodes]
+
         for postprocessor in self.node_postprocessors:
-            nodes = postprocessor.postprocess_nodes(nodes, query_bundle=query)
-        return nodes
-    
-    def api_retrieve(self, query: str, collection_name: str):
-        response = requests.post(self.qdrant_api_url, 
-                                 json={"query": query, 
-                                       "collection_name": collection_name})
-        nodes = pickle.loads(response.content)
+            nodes = postprocessor.postprocess_nodes(nodes, query_bundle=query_bundle)
+
         return nodes
 
-    def api_retrieve_wrapper(self, args):
-        query_str, collection_name = args
-        return self.api_retrieve(query=query_str, collection_name=collection_name)
+    def retrieve(self, query_bundle: QueryBundle) -> List[NodeWithScore]:
+        """Public method to retrieve nodes based on the query bundle.
 
-    def custom_retrieve(self, query, need_categories, need_months):
-        nodes = []
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            futures = []
-            for category in need_categories:
-                for month in need_months:
-                    collection_name = "{}_{}_{}".format(qdrant_collection_prefix, category, month).replace(" ", "_").lower()
-                    future = executor.submit(
-                        self.api_retrieve_wrapper, 
-                        (query.query_str, collection_name)
-                    )
-                    futures.append((future, category, month))
-            for future, category, month in futures:
-                result = future.result()
-                nodes.extend(result)
-        return nodes
+        Args:
+            query_bundle (QueryBundle): The query bundle containing the query string.
+
+        Returns:
+            List[NodeWithScore]: List of retrieved nodes with scores.
+        """
+        return self._retrieve(query_bundle)
+
+# Example usage:
+if __name__ == "__main__":
+    # Initialize the retriever
+    retriever = QdrantRetriever(
+        qdrant_api_url="https://your-qdrant-api-endpoint.com/retrieve",
+        node_postprocessors=[
+            # Add any postprocessors here
+        ]
+    )
+
+    # Create a query bundle
+    query = QueryBundle(query_str="Example query string")
+
+    # Retrieve nodes
+    retrieved_nodes = retriever.retrieve(query)
+
+    # Process the retrieved nodes
+    for node in retrieved_nodes:
+        print(f"Node: {node.node.text}, Score: {node.score}")
