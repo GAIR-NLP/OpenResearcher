@@ -220,13 +220,10 @@ Then you can run the OpenResearcher system by following the command:
 If this work is helpful, please kindly cite as:
 
 ```
-@misc{zheng2024openresearcherunleashingaiaccelerated,
-      title={OpenResearcher: Unleashing AI for Accelerated Scientific Research}, 
-      author={Yuxiang Zheng and Shichao Sun and Lin Qiu and Dongyu Ru and Cheng Jiayang and Xuefeng Li and Jifan Lin and Binjie Wang and Yun Luo and Renjie Pan and Yang Xu and Qingkai Min and Zizhao Zhang and Yiwen Wang and Wenjie Li and Pengfei Liu},
-      year={2024},
-      eprint={2408.06941},
-      archivePrefix={arXiv},
-      primaryClass={cs.IR},
-      url={https://arxiv.org/abs/2408.06941}, 
+@article{zheng2024openresearcher,
+  title={OpenResearcher: Unleashing AI for Accelerated Scientific Research},
+  author={Zheng, Yuxiang and Sun, Shichao and Qiu, Lin and Ru, Dongyu and Jiayang, Cheng and Li, Xuefeng and Lin, Jifan and Wang, Binjie and Luo, Yun and Pan, Renjie and others},
+  journal={arXiv preprint arXiv:2408.06941},
+  year={2024}
 }
 ```

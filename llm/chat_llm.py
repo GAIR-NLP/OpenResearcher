@@ -16,6 +16,6 @@ def chat_openai_api_stream(messages, model = "deepseek-chat", stop = None):
         stop=stop
     )
     for chunk in completion:
-        if chunk.choices[0].delta.content is None:
+        if chunk.choices[0].delta is None or chunk.choices[0].delta.content is None:
             continue
         yield chunk.choices[0].delta.content
