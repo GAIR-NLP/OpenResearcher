@@ -1,4 +1,5 @@
 # OpenResearcher: Unleashing AI for Accelerated Scientific Research
+
 This is the official repository for OpenResearcher.
 
 **Note: This repository is actively maintained and regularly updated to provide the latest features and improvements.**
@@ -23,11 +24,15 @@ This is the official repository for OpenResearcher.
 
 <p align="center"> Welcome to OpenResearcher, an advanced Scientific Research Assistant designed to provide a helpful answer to a research query.
 
+
 <p align="center"> With access to the arXiv corpus, OpenResearcher can provide the latest scientific insights.
+
 
 <p align="center"> Explore the frontiers of science with OpenResearcher—where answers await.
 
+
 ## 🏆 Performance
+
 We release the benchmarking results on various RAG-related systems as a leaderboard.
 
 | Models                                             | Correctness |      |      | Richness |      |      | Relevance |      |      |
@@ -64,6 +69,7 @@ GPT-4 Preference Results compared with Perplexity AI outcome.
 ##### Install necessary packages:
 
 To begin using OpenResearcher, you need to install the required dependencies. You can do this by running the following command:
+
 ```bash
 git clone https://github.com/GAIR-NLP/OpenResearcher.git 
 conda create -n openresearcher python=3.10 
@@ -91,6 +97,12 @@ docker run -p 6333:6333 -p 6334:6334 \
 ```
 
 For more Qdrant installation details, you can follow this [link](https://qdrant.tech/documentation/quickstart/).
+
+
+
+##### Install Elasticsearch:
+
+You can follow this [link](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html) to install Elasticsearch with docker.
 
 
 
@@ -175,7 +187,7 @@ The directory of `data`is formatted as follows:
      -arxiv-metadata-oai-snapshot.jsonl   # metadata        
 ```
 
-**2. Parse the html data**
+**2. Parse the html data to Qdrant vector**
 
 ```sh
 CUDA_VISIBLE_DEVICES=0 python -um connector.html_parsing --target_dir /path/to/target/directory --start_index 0 --end_index -1 \
@@ -190,7 +202,20 @@ CUDA_VISIBLE_DEVICES=0 python -um connector.html_parsing --target_dir /path/to/t
 
 ​	**meta_data_path:** metadata saved path
 
+**3. Parse the paper's metadata to Elastic search**
 
+```sh
+CUDA_VISIBLE_DEVICES=0 python -um connector.meta_elastic --meta_data_path /path/to/metadata/file \
+--chunk_size 512 --embed_batch_size 32
+```
+
+**Parameter explanation:**
+
+​	**meta_data_path:** metadata saved path
+
+​	**chunk_size:** The chunk length of the text
+
+​	**embed_batch_size:** vectorized batch size, you can adjust this parameter according to the size of the GPU memory
 
 ### 📘 Usage
 
@@ -217,6 +242,7 @@ Then you can run the OpenResearcher system by following the command:
 
 
 ## 📚 Citation
+
 If this work is helpful, please kindly cite as:
 
 ```
