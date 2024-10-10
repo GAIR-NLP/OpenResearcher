@@ -1,18 +1,20 @@
 # OpenResearcher: Unleashing AI for Accelerated Scientific Research
 
-This is the official repository for OpenResearcher.
+This is the official repository for [OpenResearcher](https://arxiv.org/abs/2408.06941).
 
-**Note: This repository is actively maintained and regularly updated to provide the latest features and improvements.**
+## 🔥News
+
+- [2024/10/06] Our paper has been accepted by EMNLP Demo Track 2024! 🎉
 
 ## 📋 Table of Contents
 
 - [Introduction](#-introduction)
 - [Performance](#-performance)
 - [Get started](#-get-started)
-  - [Setup](#-setup)
+  - [Setup](#setup)
   - [Supported models](#-supported-models)
-    - [Using Api](#-using-api)
-    - [Using Opensource LLMs](#-using-opensource-llms)
+    - [Using Api](#using-api)
+    - [Using Opensource LLMs](#using-opensource-llms)
   - [Process Data to embeddings](#-process-data-to-embeddings)
   - [Usage](#-usage)
 - [Citation](#-citation)
@@ -25,10 +27,13 @@ This is the official repository for OpenResearcher.
 <p align="center"> Welcome to OpenResearcher, an advanced Scientific Research Assistant designed to provide a helpful answer to a research query.
 
 
+
 <p align="center"> With access to the arXiv corpus, OpenResearcher can provide the latest scientific insights.
 
 
+
 <p align="center"> Explore the frontiers of science with OpenResearcher—where answers await.
+
 
 
 ## 🏆 Performance
@@ -253,3 +258,4 @@ If this work is helpful, please kindly cite as:
   year={2024}
 }
 ```
+
